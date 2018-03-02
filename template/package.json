@@ -24,7 +24,7 @@
     "webpack-cli": "^2.0.9"
   },
   "scripts": {
-    "dist": "webpack && serve dist"
+    "dist": "webpack && serve ."
   },
   "author": "",
   "license": "ISC"
