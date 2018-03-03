@@ -70,20 +70,24 @@ class RegisterForm extends React.Component {
 
   validateForm() {
     const { errors, formInput } = this.state;
-
+    let hasError = false;
     // Loop through all form fields to check for required
     for (const prop in formInput) {
       if (!formInput[prop]) {
         errors[prop].push('This field is required');
+        hasError = true;
       }
     }
 
     // Check if Password Fields match
     if (formInput.password !== formInput.passwordAgain) {
       errors.passwordAgain.push('The two Password Fields are not the same');
+      hasError = true;
     }
 
     this.setState({ errors });
+
+    return !hasError;
   }
 
   handleInputChange(e) {
@@ -96,8 +100,7 @@ class RegisterForm extends React.Component {
   }
 
   handleSubmit() {
-    this.validateForm();
-    this.props.logUserIn();
+    if (this.validateForm()) { this.props.logUserIn(); }
   }
 
   render() {
