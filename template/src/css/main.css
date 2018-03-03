@@ -3,27 +3,11 @@ html, body {
     min-height: 420px;
     margin: 0;
     color: #222;
-    background: #fff;
+    background: #ffffff;
     /*font-family: arial,sans-serif;*/
-    font-size: small;
+    /*font-size: small;*/
 }
 
-.main-body {
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-}
-
-main {
-	flex-grow: 2;
-}
-
-/*
-#login-board {
-	width: 75%;
-}
-*/
 .mxy-auto {
 	margin: auto;
 }
@@ -31,6 +15,61 @@ main {
 .w-100 {
 	width: 100% !important;
 }
+
+.w-50 {
+	width: 50% !important;
+}
+
+.w-75 {
+	width: 75% !important;
+}
+
+.h-100 {
+	height: 100% !important;
+}
+
+.h-50 {
+	height: 50% !important;
+}
+
+.bg-primary {
+	background-color: #f2f2f2;
+}
+
+.bg-white {
+	background-color: white;
+}
+
+
+.flex {
+	display: flex;
+}
+
+.column-flex {
+	flex-direction: column;
+}
+
+.justify-space-between {
+	justify-content: space-between;
+}
+
+.justify-center {
+	justify-content: center;
+}
+
+#landingMain {
+	flex-grow: 2;
+}
+
+
+
+
+/*
+#login-board {
+	width: 75%;
+}
+*/
+
 
 
 
