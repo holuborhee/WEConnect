@@ -14,12 +14,10 @@ class App extends React.Component {
   render() {
     return (
       <MuiThemeProvider>
-        <section className="container main-body">
-          <main>
-            {this.state.curr}
-          </main>
-          <footer>
-            This is footer
+        <section className="flex column-flex h-100 justify-space-between">
+          {this.state.curr}
+          <footer className="bg-primary flex justify-center">
+            <p>&copy; WeConnect 2018</p>
           </footer>
         </section>
       </MuiThemeProvider>
