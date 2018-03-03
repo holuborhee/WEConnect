@@ -58,15 +58,42 @@ class RegisterForm extends React.Component {
       formInput: {
         fullname: '', phone: '', email: '', password: '', passwordAgain: '',
       },
+      errors: {
+        fullname: [], phone: [], email: [], password: [], passwordAgain: [],
+      },
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.validateForm = this.validateForm.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   validateForm() {
-    // We validate our Form here
+    const { errors, formInput } = this.state;
+
+    // Loop through all form fields to check for required
+    for (const prop in formInput) {
+      if (!formInput[prop]) {
+        errors[prop].push('This field is required');
+      }
+    }
+
+    // Check if Password Fields match
+    if (formInput.password !== formInput.passwordAgain) {
+      errors.passwordAgain.push('The two Password Fields are not the same');
+    }
+
+    this.setState({ errors });
   }
 
+  handleInputChange(e) {
+    const target = e.target;
+    const { formInput, errors } = this.state;
+
+    errors[target.name].shift();
+    formInput[target.name] = target.value;
+    this.setState({ formInput, errors });
+  }
 
   handleSubmit() {
     this.validateForm();
@@ -80,11 +107,11 @@ class RegisterForm extends React.Component {
 
     return (
       <form >
-        <TextField className="w-100" value={fullname} floatingLabelText="Enter your full name" required />
-        <TextField className="w-100" value={phone} floatingLabelText="Enter your phone number" required type="text" />
-        <TextField className="w-100" value={email} floatingLabelText="Enter your email address" required type="email" />
-        <TextField className="w-100" value={password} floatingLabelText="Choose a password" required type="password" />
-        <TextField className="w-100" value={passwordAgain} floatingLabelText="Confirm the above password" required type="password" />
+        <TextField className="w-100" name="fullname" errorText={this.state.errors.fullname[0]} value={fullname} onChange={this.handleInputChange} floatingLabelText="Enter your full name" required />
+        <TextField className="w-100" name="phone" value={phone} errorText={this.state.errors.phone[0]} onChange={this.handleInputChange} floatingLabelText="Enter your phone number" required type="text" />
+        <TextField className="w-100" name="email" value={email} errorText={this.state.errors.email[0]} onChange={this.handleInputChange} floatingLabelText="Enter your email address" required type="email" />
+        <TextField className="w-100" name="password" value={password} errorText={this.state.errors.password[0]} onChange={this.handleInputChange} floatingLabelText="Choose a password" required type="password" />
+        <TextField className="w-100" name="passwordAgain" value={passwordAgain} errorText={this.state.errors.passwordAgain[0]} onChange={this.handleInputChange} floatingLabelText="Confirm the above password" required type="password" />
         <FlatButton
           className="w-100"
           backgroundColor="#a4c639"
