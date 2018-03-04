@@ -60,7 +60,7 @@ class App extends React.Component {
     return (
       <MuiThemeProvider>
         <section className="flex column-flex h-100 justify-space-between">
-          <Navbar isLoggedIn={this.state.isLoggedIn} onRoute={this.routeTo} />
+          <Navbar isLoggedIn={this.state.isLoggedIn} currentPage={this.state.currentPage} onRoute={this.routeTo} />
           {this.pages[this.state.currentPage]}
           <footer className="bg-primary flex justify-space-between justify-space-evenly">
             <p><a href="#" className="small">Register your Business</a></p>
