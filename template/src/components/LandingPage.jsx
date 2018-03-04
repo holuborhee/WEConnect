@@ -2,47 +2,48 @@ import React from 'react';
 import { GridList, GridTile } from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+import SearchBar from './SearchBar.jsx';
 
 
 const categories = [
 	  {
 	  	id: 1,
-	    img: '/src/images/food.jpg',
+	    img: 'food.jpg',
 	    title: 'Cuisine & Restaurants',
 	  },
 	  {
 	  	id: 2,
-	    img: '/src/images/food.jpg',
+	    img: 'food.jpg',
 	    title: 'Co-Working',
 	  },
 	  {
 	  	id: 3,
-	    img: '/src/images/food.jpg',
+	    img: 'food.jpg',
 	    title: 'Fashion',
 	  },
 	  {
 	  	id: 4,
-	    img: '/src/images/food.jpg',
+	    img: 'food.jpg',
 	    title: 'Bar',
 	  },
 	  {
 	  	id: 5,
-	    img: '/src/images/devices.jpg',
+	    img: 'devices.jpg',
 	    title: 'Devices & Gadgets',
 	  },
 	  {
 	  	id: 6,
-	    img: '/src/images/coffee.jpg',
+	    img: 'coffee.jpg',
 	    title: 'Health and Fitness',
 	  },
 	  {
 	  	id: 7,
-	    img: '/src/images/devices.jpg',
+	    img: 'devices.jpg',
 	    title: 'Education',
 	  },
 	  {
 	  	id: 8,
-	    img: '/src/images/devices.jpg',
+	    img: 'devices.jpg',
 	    title: 'BroadCasting',
 	  },
 ];
@@ -70,8 +71,10 @@ class LandingPage extends React.Component {
       <main id="landingMain" className="flex column-flex justify-space-between">
         <section className="h-50 bg-primary flex column-flex">
           <div>Nav Bar here</div>
-          <div className="mxy-auto">
-      			Search goes here
+          <div id="welcomeSearch" className="mxy-auto flex column-flex w-75 align-items-center">
+            <h2>WeConnect</h2>
+            <p>WeConnect provides a platform that brings businesses and individuals together</p>
+            <SearchBar />
           </div>
         </section>
 
@@ -87,7 +90,7 @@ class LandingPage extends React.Component {
                   titleStyle={styles.titleStyle}
                   titleBackground="linear-gradient(to top, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
                 >
-                  <img src={tile.img} />
+                  <img src={this.props.images.food} />
                 </GridTile>
       		      ))}
             </GridList>
