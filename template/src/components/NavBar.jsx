@@ -37,7 +37,7 @@ class Navbar extends React.Component {
   render() {
     const isCustomBar = this.props.currentPage === 'HOME' || this.props.currentPage === 'SEARCH';
     return (
-      <header className="bg-primary flex justify-space-between align-items-center">
+      <header className="bg-primary flex justify-space-evenly align-items-center">
         <span>
           {isCustomBar ? '' : <h1 className="logo"><a href="" onClick={this.handleNavigation}>WeConnect</a></h1>}
         </span>
