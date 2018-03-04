@@ -4,7 +4,7 @@ import './css/main.css';
 import Food from './images/food.jpg';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Navbar from './components/NavBar.jsx';
-// import LogIn from './Login.jsx';
+import LogIn from './components/Login.jsx';
 import LandingPage from './components/LandingPage.jsx';
 
 const BusinessDetail = () => (
@@ -41,18 +41,26 @@ class App extends React.Component {
     this.state = { currentPage: 'HOME', isLoggedIn: false };
     this.pages = {
       HOME: <LandingPage images={images} />,
+      LOGIN: <LogIn active="a" />,
+      SIGNUP: <LogIn active="b" />,
       BUSINESS_PAGE: <BusinessDetail />,
       SEARCH: <Search />,
       EDIT_BUSINESS: <EditBusiness />,
       CREATE_BUSINESS: <NewBusiness />,
     };
+
+    this.routeTo = this.routeTo.bind(this);
+  }
+
+  routeTo(page) {
+    this.setState({ currentPage: page });
   }
 
   render() {
     return (
       <MuiThemeProvider>
         <section className="flex column-flex h-100 justify-space-between">
-          <Navbar isLoggedIn={this.state.isLoggedIn} />
+          <Navbar isLoggedIn={this.state.isLoggedIn} onRoute={this.routeTo} />
           {this.pages[this.state.currentPage]}
           <footer className="bg-primary flex justify-space-between justify-space-evenly">
             <p><a href="#" className="small">Register your Business</a></p>
