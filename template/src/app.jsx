@@ -32,10 +32,6 @@ const NewBusiness = () => (
   */
 );
 
-const Search = () => (
-  <h1>Search Page - <strong>Not yet Implemented</strong></h1>
-);
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -48,7 +44,7 @@ class App extends React.Component {
       LOGIN: <LogIn active="a" />,
       SIGNUP: <LogIn active="b" />,
       BUSINESS_PAGE: <BusinessDetail />,
-      SEARCH: <Search />,
+      SEARCH: <SearchPage />,
       EDIT_BUSINESS: <EditBusiness />,
       CREATE_BUSINESS: <NewBusiness />,
     };
