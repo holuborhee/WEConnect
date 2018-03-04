@@ -1,20 +1,51 @@
-const webpack = require('webpack');
 const path = require('path');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-const config = {
-  entry: './src/js/app.jsx',
+
+module.exports = {
+  entry: ['./src/app.jsx'],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: 'js/[name].js',
+  },
+  devServer: {
+    contentBase: './dist',
   },
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: 'babel-loader',
+        use: ['babel-loader'],
+      },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: 'html-loader',
+          },
+        ],
+      },
+      {
+        test: /\.css$/,
+        exclude: /^node_modules$/,
+        use: ['style-loader', 'css-loader'],
+
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader',
+        ],
       },
     ],
   },
+  plugins: [
+    new CleanWebpackPlugin(['dist']),
+    new HtmlWebPackPlugin({
+      template: './src/index.html',
+      filename: './index.html',
+    }),
+  ],
 };
-module.exports = config;
