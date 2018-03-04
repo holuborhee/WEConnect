@@ -38,7 +38,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     const images = { food: Food };
-    this.state = { currentPage: 'SEARCH', isLoggedIn: false };
+    this.state = { currentPage: 'HOME', isLoggedIn: false };
     this.pages = {
       HOME: <LandingPage images={images} />,
       BUSINESS_PAGE: <BusinessDetail />,
@@ -52,10 +52,12 @@ class App extends React.Component {
     return (
       <MuiThemeProvider>
         <section className="flex column-flex h-100 justify-space-between">
-          <NavBar />
+          <Navbar isLoggedIn={this.state.isLoggedIn} />
           {this.pages[this.state.currentPage]}
-          <footer className="bg-primary flex justify-center">
+          <footer className="bg-primary flex justify-space-between justify-space-evenly">
+            <p><a href="#" className="small">Register your Business</a></p>
             <p>&copy; WeConnect 2018</p>
+            <span />
           </footer>
         </section>
       </MuiThemeProvider>
@@ -67,3 +69,12 @@ ReactDOM.render(
   <App />,
   document.getElementById('app'),
 );
+
+
+/* <AppBar
+            title="WEConnect"
+            onTitleClick={this.routeTo}
+            iconElementRight={this.state.isLoggedIn ? this.AuthBar : this.LogInBar}
+            showMenuIconButton={false}
+            zDepth={3}
+          /> */

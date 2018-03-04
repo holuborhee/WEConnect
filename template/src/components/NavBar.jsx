@@ -1,4 +1,6 @@
 import React from 'react';
+import Avatar from 'material-ui/Avatar';
+import Person from 'material-ui/svg-icons/file/folder';
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -26,6 +28,21 @@ class Navbar extends React.Component {
         <FlatButton onClick={this.handleLogin} label="Log out" style={{ marginLeft: '5px' }} />
       </span>
     ); */
+
+    this.AuthBar = (
+      <nav className="nav">
+        <a href="#">
+          <Avatar icon={<Person />} />
+        </a>
+      </nav>
+    );
+
+    this.LogInBar = (
+      <nav className="nav">
+        <a href="#">Login</a>
+        <a href="#">Sign Up</a>
+      </nav>
+    );
   }
 
 
@@ -56,6 +73,12 @@ class Navbar extends React.Component {
   	} */
 
   render() {
-    return this.props.isLoggedIn ? <p>I am Logged In</p> : <p>I am not Logged in</p>;
+    return (
+      <header className="bg-primary flex flex-end small">
+        {this.props.isLoggedIn ? this.AuthBar : this.LogInBar}
+      </header>
+    );
   }
 }
+
+export default Navbar;
