@@ -64,6 +64,13 @@ const styles = {
 class LandingPage extends React.Component {
   constructor(props) {
   	super(props);
+
+    this.handleCategoryClicked = this.handleCategoryClicked.bind(this);
+  }
+
+
+  handleCategoryClicked() {
+    this.props.onNavigate('SEARCH');
   }
 
   render() {
@@ -83,6 +90,7 @@ class LandingPage extends React.Component {
             <GridList style={styles.gridList} padding={8}>
               {categories.map(tile => (
                 <GridTile
+                  onClick={this.handleCategoryClicked}
                   key={tile.id}
                   title={tile.title}
                   actionIcon={<IconButton><StarBorder color="rgb(0, 188, 212)" /></IconButton>}
@@ -91,6 +99,7 @@ class LandingPage extends React.Component {
                 >
                   <img src={this.props.images.food} />
                 </GridTile>
+
       		      ))}
             </GridList>
           </div>

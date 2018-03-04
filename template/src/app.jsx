@@ -6,6 +6,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Navbar from './components/NavBar.jsx';
 import LogIn from './components/Login.jsx';
 import LandingPage from './components/LandingPage.jsx';
+import SearchPage from './components/SearchPage.jsx';
+
 
 const BusinessDetail = () => (
   <h1>Create a new Business - <strong>Not yet Implemented</strong></h1>
@@ -31,16 +33,18 @@ const NewBusiness = () => (
 );
 
 const Search = () => (
-  <h1>All Businesses - <strong>Not yet Implemented</strong></h1>
+  <h1>Search Page - <strong>Not yet Implemented</strong></h1>
 );
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     const images = { food: Food };
+    this.routeTo = this.routeTo.bind(this);
     this.state = { currentPage: 'HOME', isLoggedIn: false };
+
     this.pages = {
-      HOME: <LandingPage images={images} />,
+      HOME: <LandingPage images={images} onNavigate={this.routeTo} />,
       LOGIN: <LogIn active="a" />,
       SIGNUP: <LogIn active="b" />,
       BUSINESS_PAGE: <BusinessDetail />,
@@ -48,8 +52,6 @@ class App extends React.Component {
       EDIT_BUSINESS: <EditBusiness />,
       CREATE_BUSINESS: <NewBusiness />,
     };
-
-    this.routeTo = this.routeTo.bind(this);
   }
 
   routeTo(page) {
