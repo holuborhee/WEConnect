@@ -70,7 +70,6 @@ class LandingPage extends React.Component {
     return (
       <main id="landingMain" className="flex column-flex justify-space-between">
         <section className="h-50 bg-primary flex column-flex">
-          <div>Nav Bar here</div>
           <div id="welcomeSearch" className="mxy-auto flex column-flex w-75 align-items-center">
             <h2>WeConnect</h2>
             <p>WeConnect provides a platform that brings businesses and individuals together</p>
