@@ -1,6 +1,6 @@
 import React from 'react';
 import Avatar from 'material-ui/Avatar';
-import Person from 'material-ui/svg-icons/file/folder';
+import Person from 'material-ui/svg-icons/social/person';
 import SearchBar from './SearchBar.jsx';
 
 class Navbar extends React.Component {
@@ -42,7 +42,7 @@ class Navbar extends React.Component {
           {isCustomBar ? '' : <h1 className="logo"><a href="" onClick={this.handleNavigation}>WeConnect</a></h1>}
         </span>
         <span>
-          {isCustomBar ? '' : <SearchBar onSearch={this.handleNavigation} />}
+          {isCustomBar ? '' : <SearchBar />}
         </span>
 
         {this.props.isLoggedIn ? this.AuthBar : this.LogInBar}

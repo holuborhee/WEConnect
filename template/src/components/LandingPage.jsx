@@ -75,7 +75,7 @@ class LandingPage extends React.Component {
 
   render() {
     return (
-      <main id="landingMain" className="flex column-flex justify-space-between">
+      <main className="flex column-flex main">
         <section className="h-50 bg-primary flex column-flex">
           <div id="welcomeSearch" className="mxy-auto flex column-flex w-75 align-items-center">
             <h2>WeConnect</h2>
