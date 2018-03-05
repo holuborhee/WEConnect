@@ -7,11 +7,7 @@ import Navbar from './components/NavBar.jsx';
 import LogIn from './components/Login.jsx';
 import LandingPage from './components/LandingPage.jsx';
 import SearchPage from './components/SearchPage.jsx';
-
-
-const BusinessDetail = () => (
-  <h1>Create a new Business - <strong>Not yet Implemented</strong></h1>
-);
+import BusinessPage from './components/BusinessPage.jsx';
 
 
 const EditBusiness = () => (
@@ -37,13 +33,15 @@ class App extends React.Component {
     super(props);
     const images = { food: Food };
     this.routeTo = this.routeTo.bind(this);
-    this.state = { currentPage: 'HOME', isLoggedIn: false };
+    this.state = {
+      currentPage: 'HOME', isLoggedIn: false, fillHeight: { height: '100%' }, autoHeight: { minHeight: '80%' },
+    };
 
     this.pages = {
       HOME: <LandingPage images={images} onNavigate={this.routeTo} />,
       LOGIN: <LogIn active="a" onLogIn={() => this.setState({ isLoggedIn: !this.state.isLoggedIn })} />,
       SIGNUP: <LogIn active="b" />,
-      BUSINESS_PAGE: <BusinessDetail />,
+      BUSINESS_PAGE: <BusinessPage />,
       SEARCH: <SearchPage onNavigate={this.routeTo} />,
       EDIT_BUSINESS: <EditBusiness />,
       CREATE_BUSINESS: <NewBusiness />,
@@ -56,9 +54,11 @@ class App extends React.Component {
   }
 
   render() {
+    const isToFillHeight = this.state.currentPage === 'HOME' || this.state.currentPage === 'LOGIN' || this.state.currentPage === 'SIGNUP';
+
     return (
       <MuiThemeProvider>
-        <section className="flex column-flex h-100">
+        <section className="flex column-flex justify-space-between" style={isToFillHeight ? this.state.fillHeight : this.state.autoHeight}>
           <Navbar isLoggedIn={this.state.isLoggedIn} currentPage={this.state.currentPage} onRoute={this.routeTo} />
           {this.pages[this.state.currentPage]}
           <footer className="bg-primary flex justify-space-between justify-space-evenly">
