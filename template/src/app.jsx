@@ -41,14 +41,15 @@ class App extends React.Component {
 
     this.pages = {
       HOME: <LandingPage images={images} onNavigate={this.routeTo} />,
-      LOGIN: <LogIn active="a" />,
+      LOGIN: <LogIn active="a" onLogIn={() => this.setState({ isLoggedIn: !this.state.isLoggedIn })} />,
       SIGNUP: <LogIn active="b" />,
       BUSINESS_PAGE: <BusinessDetail />,
-      SEARCH: <SearchPage />,
+      SEARCH: <SearchPage onNavigate={this.routeTo} />,
       EDIT_BUSINESS: <EditBusiness />,
       CREATE_BUSINESS: <NewBusiness />,
     };
   }
+
 
   routeTo(page) {
     this.setState({ currentPage: page });
@@ -57,7 +58,7 @@ class App extends React.Component {
   render() {
     return (
       <MuiThemeProvider>
-        <section className="flex column-flex h-100 justify-space-between">
+        <section className="flex column-flex h-100">
           <Navbar isLoggedIn={this.state.isLoggedIn} currentPage={this.state.currentPage} onRoute={this.routeTo} />
           {this.pages[this.state.currentPage]}
           <footer className="bg-primary flex justify-space-between justify-space-evenly">
