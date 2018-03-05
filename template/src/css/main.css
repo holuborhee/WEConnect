@@ -78,6 +78,10 @@ header > span:nth-of-type(2) {
 	display: flex;
 }
 
+.wrap {
+	flex-wrap: wrap;
+}
+
 .column-flex {
 	flex-direction: column;
 }
@@ -199,6 +203,10 @@ header > span:nth-of-type(2) {
 	#login-board {
 		width: 600px;
 	}
+
+	.container {
+		width:65%;
+	}
 }
 
 /* Portrait tablet to landscape and desktop */
@@ -206,12 +214,20 @@ header > span:nth-of-type(2) {
 	#login-board {
 		width: 500px;
 	}
+
+	.container {
+		width: 80%;
+	}
 }
 
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
 	#login-board {
 		width: 90%;
+	}
+
+	.container {
+		width: 100%;
 	}
 
 	.w-50 {

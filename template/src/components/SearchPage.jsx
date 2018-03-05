@@ -10,6 +10,8 @@ import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 
 
+
+
 const style = {
   margin: '12px',
 };
@@ -81,6 +83,87 @@ class Filter extends React.Component {
   }
 }
 
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import Cover from '../images/cover.jpg';
+import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+import StarHalf from 'material-ui/svg-icons/toggle/star-half';
+import Star from 'material-ui/svg-icons/toggle/star';
+
+
+const BusinessCard = (props) => (
+
+
+	<Card onClick={()=>props.onClick()} className="business-card" style={{width: '250px', height: 'auto', marginBottom: '30px'}}>
+	    <CardMedia
+	    >
+	      <img src={Cover} alt="" />
+	    </CardMedia>
+	    <CardTitle title={props.name} />
+	    <CardText>
+	      <Star />
+	    	<Star />
+	    	<Star />
+	    	<StarHalf />
+	      	<StarBorder />
+	    </CardText>
+	</Card>
+
+)
+
+
+const Businesses = [
+	{
+		id: 1,
+		name: 'Mary Kay Fashion'
+	},
+	{
+		id: 2,
+		name: 'Shade Couture'
+	},
+	{
+		id: 3,
+		name: 'Glady\'s Wears'
+	},
+	{
+		id: 4,
+		name: 'M&G Fashion'
+	},
+	{
+		id: 5,
+		name: 'M&G Fashion'
+	},
+	{
+		id: 6,
+		name: 'Mary Kay Fashion'
+	},
+	{
+		id: 7,
+		name: 'Shade Couture'
+	},
+	{
+		id: 8,
+		name: 'Shade Couture'
+	},
+	{
+		id: 9,
+		name: 'Glady\'s Wears'
+	},
+	{
+		id: 10,
+		name: 'Glady\'s Wears'
+	},
+	{
+		id: 11,
+		name: 'M&G Fashion'
+	},
+	{
+		id: 12,
+		name: 'Mary Kay Fashion'
+	},
+
+
+]
+
 
 class SearchPage extends React.Component {
   constructor(props) {
@@ -96,8 +179,11 @@ class SearchPage extends React.Component {
           <nav />
         </div>
         <Filter />
-        <main className="main">
-    			Content
+        <main className="mxy-auto container">
+        	<h5>Showing result for Fashion Businesses in Lagos</h5>
+    		<div className="flex justify-space-between wrap">
+    			{ Businesses.map(business=><BusinessCard  onClick={()=>this.props.onNavigate('BUSINESS_PAGE')} key={business.id} {...business} />) }
+    		</div>
         </main>
       </section>
     );
