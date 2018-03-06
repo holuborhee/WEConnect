@@ -8,6 +8,8 @@ import LogIn from './components/Login.jsx';
 import LandingPage from './components/LandingPage.jsx';
 import SearchPage from './components/SearchPage.jsx';
 import BusinessPage from './components/BusinessPage.jsx';
+import TextField from 'material-ui/TextField';
+import FlatButton from 'material-ui/FlatButton';
 
 
 const EditBusiness = () => (
@@ -15,17 +17,22 @@ const EditBusiness = () => (
 );
 
 const NewBusiness = () => (
-  <h1>Create a new Business - <strong>Not yet Implemented</strong></h1>
-  /*
-  Name
-  Logo
-  Cover Picture
-  Slogan
-  Average Rating
-  Location
-  About
-
-  */
+  <section className="mxy-auto" id="login-board">
+    <h1>Enter Business Details</h1>
+    <form >
+      <TextField className="w-100" floatingLabelText="Business Name" />
+      <TextField className="w-100" floatingLabelText="Enter Phone Number" />
+      <TextField className="w-100" floatingLabelText="Provide your website here" />
+      <TextField className="w-100" floatingLabelText="Enter category of Business" />
+      <TextField className="w-100" floatingLabelText="Enter your Location" />
+      <TextField className="w-100" floatingLabelText="Enter your opening hours" />
+      <FlatButton
+        className="w-100"
+        backgroundColor="#a4c639"
+        label="REGISTER BUSINESS"
+      />
+    </form>
+  </section>
 );
 
 class App extends React.Component {
@@ -54,7 +61,7 @@ class App extends React.Component {
   }
 
   render() {
-    const isToFillHeight = this.state.currentPage === 'HOME' || this.state.currentPage === 'LOGIN' || this.state.currentPage === 'SIGNUP';
+    const isToFillHeight = this.state.currentPage === 'HOME' || this.state.currentPage === 'LOGIN' || this.state.currentPage === 'SIGNUP' || this.state.currentPage === 'CREATE_BUSINESS';
 
     return (
       <MuiThemeProvider>
@@ -62,7 +69,7 @@ class App extends React.Component {
           <Navbar isLoggedIn={this.state.isLoggedIn} currentPage={this.state.currentPage} onRoute={this.routeTo} />
           {this.pages[this.state.currentPage]}
           <footer className="bg-primary flex justify-space-between justify-space-evenly">
-            <p><a href="#" className="small">Register your Business</a></p>
+            <p><a href="#" onClick={(e) => { e.preventDefault(); this.routeTo('CREATE_BUSINESS'); }} className="small">Register your Business</a></p>
             <p>&copy; WeConnect 2018</p>
             <span />
           </footer>
