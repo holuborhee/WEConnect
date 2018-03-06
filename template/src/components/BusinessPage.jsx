@@ -158,6 +158,7 @@ class BusinessPage extends React.Component {
                 <ListItem primaryText="08164488989" leftIcon={<Phone />} />
                 <ListItem primaryText="marykayfashion.com.ng" leftIcon={<Link />} />
               </List>
+              <RaisedButton style={{ marginLeft: '20px' }} backgroundColor="#f2f2f2" onClick={() => this.props.onNavigate('EDIT_BUSINESS')} label="Update Business Info" />
             </Paper>
 
             <Card style={{ marginTop: '30px' }}>

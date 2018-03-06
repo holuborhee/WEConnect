@@ -13,7 +13,22 @@ import FlatButton from 'material-ui/FlatButton';
 
 
 const EditBusiness = () => (
-  <h1>Edit A Business - <strong>Not yet Implemented</strong></h1>
+  <section className="mxy-auto" id="login-board">
+    <h1>MARY KAY FASHION</h1>
+    <form >
+      <TextField className="w-100" value="Mary Kay Fashion" floatingLabelText="Business Name" />
+      <TextField className="w-100" value="08164488989" floatingLabelText="Enter Phone Number" />
+      <TextField className="w-100" value="marykayfashion.com.ng" floatingLabelText="Provide your website here" />
+      <TextField className="w-100" value="Fashion" floatingLabelText="Enter category of Business" />
+      <TextField className="w-100" floatingLabelText="Enter your Location" />
+      <TextField className="w-100" floatingLabelText="Enter your opening hours" />
+      <FlatButton
+        className="w-100"
+        backgroundColor="#a4c639"
+        label="UPDATE BUSINESS"
+      />
+    </form>
+  </section>
 );
 
 const NewBusiness = () => (
@@ -48,7 +63,7 @@ class App extends React.Component {
       HOME: <LandingPage images={images} onNavigate={this.routeTo} />,
       LOGIN: <LogIn active="a" onLogIn={() => this.setState({ isLoggedIn: !this.state.isLoggedIn })} />,
       SIGNUP: <LogIn active="b" />,
-      BUSINESS_PAGE: <BusinessPage />,
+      BUSINESS_PAGE: <BusinessPage onNavigate={this.routeTo} />,
       SEARCH: <SearchPage onNavigate={this.routeTo} />,
       EDIT_BUSINESS: <EditBusiness />,
       CREATE_BUSINESS: <NewBusiness />,
@@ -61,7 +76,7 @@ class App extends React.Component {
   }
 
   render() {
-    const isToFillHeight = this.state.currentPage === 'HOME' || this.state.currentPage === 'LOGIN' || this.state.currentPage === 'SIGNUP' || this.state.currentPage === 'CREATE_BUSINESS';
+    const isToFillHeight = this.state.currentPage === 'HOME' || this.state.currentPage === 'LOGIN' || this.state.currentPage === 'SIGNUP' || this.state.currentPage === 'CREATE_BUSINESS' || this.state.currentPage === 'EDIT_BUSINESS';
 
     return (
       <MuiThemeProvider>
