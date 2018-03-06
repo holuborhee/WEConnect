@@ -55,7 +55,7 @@ class Filter extends React.Component {
   	          	))
   	          }
         </span>
-        <span style={{ alignSelf: 'center' }}>
+        <span>
           <RaisedButton
             onClick={this.handleMoreClick}
             label="More"
