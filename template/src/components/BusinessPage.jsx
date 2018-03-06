@@ -127,7 +127,7 @@ class BusinessPage extends React.Component {
               <section style={{ padding: '3%' }}>
                 <GridList
                   style={{
- display: 'flex', flexWrap: 'nowrap', overflowX: 'auto', width: '500px',
+ display: 'flex', flexWrap: 'nowrap', overflowX: 'auto', width: '600px',
 }}
                   padding={8}
                 >
