@@ -18,6 +18,7 @@ import Device from '../images/devices.jpg';
 import Cover from '../images/cover.jpg';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
+import GoogleMapReact from 'google-map-react';
 
 
 const Reviews = () => (
@@ -70,6 +71,8 @@ const NewReview = () => {
     </section>
   );
 };
+
+const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 class BusinessPage extends React.Component {
   constructor(props) {
@@ -157,10 +160,20 @@ class BusinessPage extends React.Component {
               </List>
             </Paper>
 
-            <Card>
+            <Card style={{ marginTop: '30px' }}>
 
-              <CardMedia >
-                <p>Map here</p>
+              <CardMedia className="map-media" style={{ height: '250px' }}>
+                <GoogleMapReact
+                  bootstrapURLKeys={{ key: 'AIzaSyA0W2GMiWvp-Jm7ZbpthWIoyamHpJFarts' }}
+                  defaultCenter={{ lat: 6.5005009, lng: 3.3666 }}
+                  defaultZoom={14}
+                >
+                  <AnyReactComponent
+                    lat={6.5005009}
+                    lng={3.3666}
+                    text="Mary Kay Fashion"
+                  />
+                </GoogleMapReact>
               </CardMedia>
               <CardText className="flex">
                 <Location /> <span>Block 1, Admirality Way, Lekki Phase 1, Lagos, Nigeria.</span>
