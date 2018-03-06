@@ -35,11 +35,11 @@
   },
   "scripts": {
     "start": "webpack-dev-server --open --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production && cp -a dist/. build/"
   },
   "scrips": {
     "start": "webpack-dev-server --progress --colors --hot --config ./webpack.config.js",
-    "build": "cp index.html build/index.html && cp src/css/main.css build/main.css && cp dist/bundle.js build/bundle.js"
+    "build": ""
   },
   "author": "",
   "license": "ISC"
