@@ -16,7 +16,60 @@ import Star from 'material-ui/svg-icons/toggle/star';
 import { GridList, GridTile } from 'material-ui/GridList';
 import Device from '../images/devices.jpg';
 import Cover from '../images/cover.jpg';
+import TextField from 'material-ui/TextField';
+import FlatButton from 'material-ui/FlatButton';
 
+
+const Reviews = () => (
+  <section>
+    <h2>Most Recent Reviews</h2>
+    <List>
+      {[1, 2, 3].map(i => (
+        <ListItem key={i}>
+          <p><strong>Shade098</strong> <span>Most of the reviews here are absolutely spot on. Their make up artist are also two pretty to take a bite ot of Bombest desserts i've had in a very long time. Very interesting combination.</span></p>
+          <Divider />
+        </ListItem>
+
+	))
+	}
+    </List>
+  </section>
+
+);
+
+const NewReview = () => {
+  function BorderDiv(props) {
+    return (
+      <div style={{ border: '1px solid grey', padding: '5px', marginBottom: '5px' }}>
+        {props.children}
+      </div>
+    );
+  }
+
+  return (
+    <section style={{ width: '500px' }}>
+      <BorderDiv>
+        <TextField className="w-100" floatingLabelText="Enter your name" />
+      </BorderDiv>
+      <BorderDiv>
+        <span>
+          <StarBorder />
+          <StarBorder />
+          <StarBorder />
+          <StarBorder />
+          <StarBorder />
+        </span>
+        <span>Rate this business First</span>
+        <TextField className="w-100" floatingLabelText="Enter your review" />
+      </BorderDiv>
+      <FlatButton
+        className=""
+        backgroundColor="#a4c639"
+        label="Post Review"
+      />
+    </section>
+  );
+};
 
 class BusinessPage extends React.Component {
   constructor(props) {
@@ -86,9 +139,11 @@ class BusinessPage extends React.Component {
                 </GridList>
               </section>
               <Divider />
-              <div>Reviews</div>
+              <Reviews />
             </div>
-            <div>New Revuew</div>
+            <div className="flex flex-end" style={{ paddingRight: '20px' }}>
+              <NewReview />
+            </div>
           </main>
           <aside style={{ marginLeft: '20px' }}>
             <Paper>
@@ -105,7 +160,7 @@ class BusinessPage extends React.Component {
             <Card>
 
               <CardMedia >
-                <p>Mao here</p>
+                <p>Map here</p>
               </CardMedia>
               <CardText className="flex">
                 <Location /> <span>Block 1, Admirality Way, Lekki Phase 1, Lagos, Nigeria.</span>
