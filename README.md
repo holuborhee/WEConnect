@@ -48,7 +48,7 @@ The development flow is divided into 3 with separate folders for each.
 
 ##### WHAT SHOULD I KNOW?
 1. [ReactJs](https://reactjs.org)
-2. [Material UI FRAMEWORK](https://material-ui.com)
+2. [Material UI FRAMEWORK](https://www.material-ui.com)
 
 ##### INITIAL SETUP
 
