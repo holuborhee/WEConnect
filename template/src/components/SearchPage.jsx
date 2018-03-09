@@ -3,7 +3,11 @@ import Paper from 'material-ui/Paper';
 import SearchBar from './SearchBar.jsx';
 
 import RaisedButton from 'material-ui/RaisedButton';
-import ActionAndroid from 'material-ui/svg-icons/action/android';
+
+import Bar from 'material-ui/svg-icons/maps/local-bar';
+import Restaurant from 'material-ui/svg-icons/maps/restaurant';
+import Mall from 'material-ui/svg-icons/maps/local-grocery-store';
+import Hotel from 'material-ui/svg-icons/maps/local-hotel';
 
 import Popover from 'material-ui/Popover';
 import Menu from 'material-ui/Menu';
@@ -16,7 +20,7 @@ const style = {
   margin: '12px',
 };
 
-
+const icons = [<Mall />, <Bar />, <Restaurant />, <Hotel />];
 class Filter extends React.Component {
   constructor(props) {
     super(props);
@@ -45,10 +49,10 @@ class Filter extends React.Component {
         <p className="small" >Filter</p>
         <span className="flex justify-space-around">
           {
-  	          	[1, 2, 3, 4].map(i => (
+  	          	icons.map((icon, i) => (
     <RaisedButton
       backgroundColor="#f2f2f2"
-      icon={<ActionAndroid />}
+      icon={icon}
       style={style}
       key={i}
     />
@@ -68,10 +72,10 @@ class Filter extends React.Component {
             onRequestClose={this.handleMoreClose}
           >
             <Menu>
-              <MenuItem primaryText="Refresh" />
-              <MenuItem primaryText="Help &amp; feedback" />
-              <MenuItem primaryText="Settings" />
-              <MenuItem primaryText="Sign out" />
+              <MenuItem primaryText="Fashion" />
+              <MenuItem primaryText="Banking" />
+              <MenuItem primaryText="Computer Hardware" />
+              <MenuItem primaryText="Accounting Service" />
             </Menu>
           </Popover>
         </span>
