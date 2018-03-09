@@ -54,10 +54,10 @@ You should be familiar with both three technologies if you desire to edit the te
 3.  Switch to **gh-pages branch** - ```$ git checkout develop```
 
 4. Host the files and folder unto any server of choice
-    
-       ![file structure](https://github.com/holuborhee/WEConnect/blob/master/built.png)
-      
-           **Snapshot of files to copy**
+
+![file structure](https://github.com/holuborhee/WEConnect/blob/master/built.png)
+
+**Snapshot of files to copy**
 
 
 ### Clone repo and make changes to source File
