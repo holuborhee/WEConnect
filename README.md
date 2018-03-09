@@ -2,7 +2,7 @@
 
 [Live Preview](https://holuborhee.github.io/WEConnect/)
 
-#### NOTE: Information here is just for the UI Design. To find out about the main project and how to contribute, [click here] (https://github.com/holuborhee/WEConnect)
+#### NOTE: Information here is just for the UI Design. To find out about the main project and how to contribute, [click here](https://github.com/holuborhee/WEConnect)
 
 ## MOCK UPS 
 
