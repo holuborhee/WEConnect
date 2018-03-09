@@ -46,13 +46,17 @@ The development flow is divided into 3 with separate folders for each.
 
 - [Also check out gh-pages branch for a more comprehensive README](https://github.com/holuborhee/WEConnect/tree/gh-pages)
 
-##### Initial Setup
+##### WHAT SHOULD I KNOW?
+1. [ReactJs](https://reactjs.org)
+2. [Material UI FRAMEWORK](https://material-ui.com)
+
+##### INITIAL SETUP
 
 **STEP 1.** Confirm you are in the **WEConnect** directory
 
 ```$ pwd```
 
-Your result should be something like this */Users/olubori/andela/WEConnect*. **Don't worry if it's not exactly the same, just be sure it ends with *WEConnect*, and if not make sure you navigate to the folder**.
+Your result should be something like this ```/Users/olubori/andela/WEConnect```. **Don't worry if it's not exactly the same, just be sure it ends with *WEConnect*, and if it doesn't you should navigate to the folder**.
 
 **STEP 2.** Switch to develop branch
 
