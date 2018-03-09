@@ -2,9 +2,8 @@
 
 [Live Preview](https://holuborhee.github.io/WEConnect/)
 
-A platform that provides a platform that brings businesses and individuals together.
+WEConnect provides a platform that brings businesses and individuals together.
 
-weConnect brings people close to their favorites businesses all across the globe.
 
 ### What can users do?
 
