@@ -1,0 +1,45 @@
+{
+  "name": "WEConnect",
+  "version": "1.0.0",
+  "description": "WEConnect connacts businesses to consumers",
+  "main": "server/lib/index.js",
+  "author": "John David",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/holuborhee/WEConnect"
+  },
+  "bugs": {
+    "url": "https://github.com/holuborhee/WEConnect/issues"
+  },
+  "homepage": "https://github.com/holuborhee/WEConnect#readme",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "config": "^1.20.1",
+    "express": "^4.13.4",
+    "morgan": "^1.7.0",
+    "swagger-ui-express": "^2.0.15"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
+    "eslint": "^4.18.2",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.9.0",
+    "mocha": "^2.4.5",
+    "nodemon": "^1.17.1"
+  },
+  "scripts": {
+    "pretest": "eslint --ignore-path .gitignore .",
+    "dev": "npm run pretest && babel-node lib/index.js",
+    "start": "nodemon lib/index.js --exec babel-node",
+    "dev-start": "nodemon lib/index.js --exec \"npm run pretest && babel-node\"",
+    "build": "babel lib -d dist",
+    "serve": "node dist/index.js",
+    "test": "mocha --compilers js:babel-register"
+  }
+}
