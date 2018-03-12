@@ -1,6 +1,6 @@
 # WEConnect 
 
-[![Build Status](https://travis-ci.org/holuborhee/WEConnect.svg?branch=master)](https://travis-ci.org/holuborhee/WEConnect)
+[![Build Status](https://travis-ci.org/holuborhee/WEConnect.svg?branch=ft-challenge2-server)](https://travis-ci.org/holuborhee/WEConnect)
 [![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/holuborhee/WEConnect)
 
 [Live Preview](https://holuborhee.github.io/WEConnect/)
