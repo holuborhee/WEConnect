@@ -1,8 +1,8 @@
 {
   "name": "WEConnect",
   "version": "1.0.0",
-  "description": "WEConnect connacts businesses to consumers",
-  "main": "server/lib/index.js",
+  "description": "WEConnect connects businesses to consumers",
+  "main": "server/index.js",
   "author": "John David",
   "license": "MIT",
   "repository": {
@@ -35,10 +35,10 @@
   },
   "scripts": {
     "pretest": "eslint --ignore-path .gitignore .",
-    "dev": "npm run pretest && babel-node lib/index.js",
-    "start": "nodemon lib/index.js --exec babel-node",
-    "dev-start": "nodemon lib/index.js --exec \"npm run pretest && babel-node\"",
-    "build": "babel lib -d dist",
+    "dev": "npm run pretest && babel-node server/index.js",
+    "start": "nodemon server/index.js --exec babel-node",
+    "dev-start": "nodemon server/index.js --exec \"npm run pretest && babel-node\"",
+    "build": "babel server -d dist",
     "serve": "node dist/index.js",
     "test": "mocha --compilers js:babel-register"
   }
