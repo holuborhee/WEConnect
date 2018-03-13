@@ -52,7 +52,7 @@ describe('Model User', () => {
       done();
     });
 
-    it('should return field with issue for nonMatching password and Phone', (done) => {
+    it('should return field not matching as key', (done) => {
       expect(User.getByPhoneAndPassword('08164488989', 'ssword')).to.have.key('password');
       expect(User.getByPhoneAndPassword('0816448', 'password')).to.have.key('phone');
       expect(User.getByPhoneAndPassword('0816448', 'sword')).to.have.key('phone');
@@ -63,14 +63,14 @@ describe('Model User', () => {
 
   describe('function getByEmailAndPassword()', () => {
     it('should return an object', (done) => {
-      expect(User.getByPhoneAndPassword('daveholuborhee@gmail.com', 'password')).to.be.an('object');
+      expect(User.getByEmailAndPassword('daveholuborhee@gmail.com', 'password')).to.be.an('object');
       done();
     });
 
-    it('should return field with issue for nonMatching password and Phone', (done) => {
-      expect(User.getByPhoneAndPassword('daveholuborhee@gmail.com', 'ssword')).to.have.key('password');
-      expect(User.getByPhoneAndPassword('davehe@gmail.com', 'password')).to.have.key('email');
-      expect(User.getByPhoneAndPassword('0816448', 'sword')).to.have.key('email');
+    it('should return field not matching as key', (done) => {
+      expect(User.getByEmailAndPassword('daveholuborhee@gmail.com', 'ssword')).to.have.key('password');
+      expect(User.getByEmailAndPassword('davehe@gmail.com', 'password')).to.have.key('email');
+      expect(User.getByEmailAndPassword('0816448', 'sword')).to.have.key('email');
       done();
     });
   });

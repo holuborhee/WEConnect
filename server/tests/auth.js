@@ -75,7 +75,7 @@ describe('test for routes', () => {
           .end((err, res) => {
             expect(res).to.have.status(200);
             expect(res.body.status).to.equal('success');
-            expect(res.body.data.user).to.include({ name: 'John David' });
+            expect(res.body.data.user).to.include({ name: 'Olubori David' });
             done();
           });
       });
@@ -84,12 +84,12 @@ describe('test for routes', () => {
         chai.request(app)
           .post(path)
           .send({
-            email: 'daveholuborhee@gmail.com', password: 'password',
+            phone: '08164488989', password: 'password',
           })
           .end((err, res) => {
             expect(res).to.have.status(200);
             expect(res.body.status).to.equal('success');
-            expect(res.body.data.user).to.include({ name: 'John David' });
+            expect(res.body.data.user).to.include({ name: 'Olubori David' });
             done();
           });
       });
@@ -113,12 +113,41 @@ describe('test for routes', () => {
         chai.request(app)
           .post(path)
           .send({
-            email: 'daveholuborhee@gmail.com', password: 'ssword',
+            email: 'daveholubo@gmail.com', password: 'password',
           })
           .end((err, res) => {
             expect(res).to.have.status(401);
             expect(res.body.status).to.equal('fail');
             expect(res.body.data).to.have.key('email');
+            done();
+          });
+      });
+
+      it('should return Unauthorized code for wrong phone', (done) => {
+        chai.request(app)
+          .post(path)
+          .send({
+            phone: '35454545454', password: 'password',
+          })
+          .end((err, res) => {
+            expect(res).to.have.status(401);
+            expect(res.body.status).to.equal('fail');
+            expect(res.body.data).to.have.key('phone');
+            done();
+          });
+      });
+
+
+      it('should return Unprocessed entity if any value is missing', (done) => {
+        chai.request(app)
+          .post(path)
+          .send({
+            password: 'password',
+          })
+          .end((err, res) => {
+            expect(res).to.have.status(422);
+            expect(res.body.status).to.equal('fail');
+            expect(res.body.data).to.have.all.keys('phone', 'email');
             done();
           });
       });

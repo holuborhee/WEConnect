@@ -18,16 +18,35 @@ class User {
     return user;
   }
 
-  /* static getByEmailAndpassword($email, $password){
-    const user = users.find(u=> )
-  } */
+  static getByEmailAndPassword(email, password) {
+    const user = User.getByEmail(email);
+    if (user) {
+      if (user.password === password) {
+        return user;
+      } return { password: `${password} isn't matching for the user` };
+    }
 
-  static getByEmail($email) {
-    return users.find(u => u.email === $email);
+    return { email: `${email} doesn't match any email on server` };
   }
 
-  static getByPhone($phone) {
-    return users.find(u => u.phone === $phone);
+
+  static getByPhoneAndPassword(phone, password) {
+    const user = User.getByPhone(phone);
+    if (user) {
+      if (user.password === password) {
+        return user;
+      } return { password: `${password} isn't matching for the user` };
+    }
+
+    return { phone: `${phone} doesn't match any phone on server` };
+  }
+
+  static getByEmail(email) {
+    return users.find(u => u.email === email);
+  }
+
+  static getByPhone(phone) {
+    return users.find(u => u.phone === phone);
   }
 
   static all() {
