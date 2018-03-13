@@ -19,8 +19,6 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use('/api/v1', routes);
 
-app.route('/')
-  .get((req, res) => res.status(200).send({ message: 'WECONNECT API VERSION1' }));
 
 app.listen(port);
 
