@@ -12,8 +12,9 @@ class BusinessController {
    * @returns {object} res.
    */
   static index(req, res) {
-    const { q, location, category } = req.query;
-    let message = 'You requested for all businesses';
+    // const { q, location, category } = req.query;
+    return res.status(200).send({ status: 'success', data: { businesses: [] } });
+    /* let message = 'You requested for all businesses';
     if (q) { message += ` with name as ${q}`; }
     if (location) { message += ` in ${location}`; }
     if (category) { message += ` under ${category}`; }
@@ -21,7 +22,7 @@ class BusinessController {
     return res.status(200).send({
       message,
       error: false,
-    });
+    }); */
   }
 
 
