@@ -64,6 +64,65 @@ describe('test for routes', () => {
   describe(`${BASE_URL}/auth/login`, () => {
   // Method POST
     const path = `${BASE_URL}/auth/login`;
+    describe('POST', () => {
+    // All requests are okay
+      it('should return success for email and matching password', (done) => {
+        chai.request(app)
+          .post(path)
+          .send({
+            email: 'daveholuborhee@gmail.com', password: 'password',
+          })
+          .end((err, res) => {
+            expect(res).to.have.status(200);
+            expect(res.body.status).to.equal('success');
+            expect(res.body.data.user).to.include({ name: 'John David' });
+            done();
+          });
+      });
+
+      it('should return success for phone and matching password', (done) => {
+        chai.request(app)
+          .post(path)
+          .send({
+            email: 'daveholuborhee@gmail.com', password: 'password',
+          })
+          .end((err, res) => {
+            expect(res).to.have.status(200);
+            expect(res.body.status).to.equal('success');
+            expect(res.body.data.user).to.include({ name: 'John David' });
+            done();
+          });
+      });
+
+
+      it('should return Unauthorized code for wrong password', (done) => {
+        chai.request(app)
+          .post(path)
+          .send({
+            email: 'daveholuborhee@gmail.com', password: 'ssword',
+          })
+          .end((err, res) => {
+            expect(res).to.have.status(401);
+            expect(res.body.status).to.equal('fail');
+            expect(res.body.data).to.have.key('password');
+            done();
+          });
+      });
+
+      it('should return Unauthorized code for wrong email', (done) => {
+        chai.request(app)
+          .post(path)
+          .send({
+            email: 'daveholuborhee@gmail.com', password: 'ssword',
+          })
+          .end((err, res) => {
+            expect(res).to.have.status(401);
+            expect(res.body.status).to.equal('fail');
+            expect(res.body.data).to.have.key('email');
+            done();
+          });
+      });
+    });
   });
 });
 
