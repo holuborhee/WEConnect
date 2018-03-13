@@ -7,29 +7,30 @@ db.users = [{
   id: 1,
   name: 'Olubori David',
   phone: '08164488989',
-  email: 'daveholuborhee@gmail.com'
+  email: 'daveholuborhee@gmail.com',
   password: 'password',
 },
 {
   id: 2,
   name: 'Anderson Bulugbe',
   phone: '07051398099',
-  email: 'anderson@gmail.com'
+  email: 'anderson@gmail.com',
   password: 'password',
 },
 {
   id: 3,
   name: 'Rosaline Adelarin',
   phone: '08052356173',
-  email: 'rosaline@gmail.com'
+  email: 'rosaline@gmail.com',
   password: 'password',
 },
 {
   id: 4,
   name: 'Chuks Amaobi',
   phone: '09076543221',
-  email: 'chuks@gmail.com'
+  email: 'chuks@gmail.com',
   password: 'password',
+},
 ];
 
 db.businesses = [{

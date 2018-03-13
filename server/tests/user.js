@@ -5,7 +5,7 @@ import User from '../models/user';
 const { expect } = chai;
 
 
-describe('Model User', () => {
+describe.only('Model User', () => {
   describe('function find()', () => {
     it('should return an object when id matches an existing id', (done) => {
       expect(User.find(1)).to.be.an('object');
@@ -18,20 +18,31 @@ describe('Model User', () => {
     });
   });
 
-  describe('function add()', () => {
+  describe.only('function add()', () => {
   	it('should populate the users db', (done) => {
-  		User.add({ name: 'Adekunle Ajasin', address: 'Nairobi, Kenya', role: 'Software Developer' });
+  		User.add({
+        name: 'Adekunle Ajasin', phone: '08052356173', email: 'rosaline@gmail.com', password: 'password',
+      });
       expect(User.all()).to.be.length(5);
       done();
     });
 
     it('should return an object', (done) => {
-  	 const user = User.add({ name: 'Adekunle Ajasin', address: 'Nairobi, Kenya', role: 'Software Developer' });
+  	 const user = User.add({
+        name: 'Adekunle Ajasin', phone: '08052356173', email: 'rosaline@gmail.com', password: 'password',
+      });
       expect(user).to.be.an('object');
       done();
     });
 
-    // You should write more scenarios for the add() function;
+    it('should perform no action and return null when parameters are not complete', (done) => {
+      const user = User.add({
+        phone: '08052356173', email: 'rosaline@gmail.com', password: 'password',
+      });
+      expect(user).to.be.null;
+      expect(User.all()).to.be.length(6);
+      done();
+    });
   });
 
 

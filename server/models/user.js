@@ -1,9 +1,12 @@
 import db from '../db';
+import Helper from '../helpers';
 
 const { users } = db;
 class User {
   static add(props) {
     const user = props;
+    const required = ['name', 'phone', 'email', 'password'];
+    if (Helper.propsNotIn(user, required).length > 0) { return null; }
     user.id = users.length + 1;
     users.push(user);
     return user;
