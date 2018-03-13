@@ -5,7 +5,7 @@ import User from '../models/user';
 const { expect } = chai;
 
 
-describe.only('Model User', () => {
+describe('Model User', () => {
   describe('function find()', () => {
     it('should return an object when id matches an existing id', (done) => {
       expect(User.find(1)).to.be.an('object');
@@ -18,12 +18,12 @@ describe.only('Model User', () => {
     });
   });
 
-  describe.only('function add()', () => {
+  describe('function add()', () => {
   	it('should populate the users db', (done) => {
   		User.add({
         name: 'Adekunle Ajasin', phone: '08052356173', email: 'rosaline@gmail.com', password: 'password',
       });
-      expect(User.all()).to.be.length(5);
+      expect(User.all()).to.be.length(6);
       done();
     });
 
@@ -40,7 +40,7 @@ describe.only('Model User', () => {
         phone: '08052356173', email: 'rosaline@gmail.com', password: 'password',
       });
       expect(user).to.be.null;
-      expect(User.all()).to.be.length(6);
+      expect(User.all()).to.be.length(7);
       done();
     });
   });
