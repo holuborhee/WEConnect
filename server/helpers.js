@@ -1,7 +1,4 @@
 
 
-/* . This file should contain functions you make use in your app,
-     They should be general functions useful in any class and probably test too
-
- */
+/* . This file contains functions of general use to the whole of the app, */
 
