@@ -18,6 +18,18 @@ class User {
     return user;
   }
 
+  /* static getByEmailAndpassword($email, $password){
+    const user = users.find(u=> )
+  } */
+
+  static getByEmail($email) {
+    return users.find(u => u.email === $email);
+  }
+
+  static getByPhone($phone) {
+    return users.find(u => u.phone === $phone);
+  }
+
   static all() {
   	return users;
   }
