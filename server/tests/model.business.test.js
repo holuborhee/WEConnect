@@ -84,7 +84,47 @@ describe('Model Business', () => {
     });
   });
 
-  describe('function crreate()', () => {
+
+  describe('function modify()', () => {
+    it('should return an instance of business', (done) => {
+      const b = Business.modify({
+        id: 1, name: 'New Name',
+      });
+
+      expect(b).to.be.an.instanceOf(Business);
+      expect(b.id).to.equal(1);
+      expect(b.name).to.equal('New Name');
+      expect(b.address).to.equal('31, Mbaise Road, Owerri');
+      done();
+    });
+
+    it('should still return an instance of business', (done) => {
+      const b = Business.modify({
+        id: 1, nam: 'Noble Computers',
+      });
+
+      expect(b).to.be.an.instanceOf(Business);
+      expect(b.id).to.equal(1);
+      expect(b.name).to.equal('New Name');
+      expect(b.address).to.equal('31, Mbaise Road, Owerri');
+      done();
+    });
+
+    it('should not change businesses array length', (done) => {
+      expect(Business.all()).to.have.lengthOf(5);
+      done();
+    });
+
+    it('should return a null when parameter does not contain id', (done) => {
+      const b = Business.modify({
+        user: 1, category: 4, latitude: 3.142, longitude: 4.5678, address: '31, Mbaise Road, Owerri',
+      });
+      expect(b).to.be.null; /* eslint no-unused-expressions: "off" */
+      done();
+    });
+  });
+
+  describe('function create()', () => {
     it('create should return an instance of business', (done) => {
       const b = Business.create({
         name: 'Noble Computers', user: 1, category: 4, latitude: 3.142, longitude: 4.5678, address: '31, Mbaise Road, Owerri',
