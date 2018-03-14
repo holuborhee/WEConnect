@@ -5,6 +5,8 @@ import Review from './review';
 const { businesses } = db;
 
 class Business {
+  /* IMPORTANT: To implement get avarage Rating function/getter */
+
   constructor(props) {
     const required = ['id', 'name', 'user', 'category', 'latitude', 'longitude', 'address'];
     if (!props) {

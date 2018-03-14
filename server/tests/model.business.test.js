@@ -195,4 +195,9 @@ describe('Model Business', () => {
       });
     });
   });
+
+
+  describe('get AverageRating', () => {
+    it('should calculate and return avarage rating for a business');
+  });
 });
