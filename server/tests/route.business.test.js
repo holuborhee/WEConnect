@@ -44,7 +44,7 @@ describe('Business Routes', () => {
 
       it('should search for business with name', (done) => {
         chai.request(app)
-		  .get(`${BASE_URL}?q=oluaka`)
+		  .get(`${BASE_URL}?q=noble`)
 		  .end((err, res) => {
 		  	expect(res).to.have.status(200);
 		  	expect(res.body.status).to.equal('success');
@@ -70,7 +70,7 @@ describe('Business Routes', () => {
 		  .end((err, res) => {
 		  	expect(res).to.have.status(200);
 		  	expect(res.body.status).to.equal('success');
-		  	expect(res.body.data.businesses).to.be.an('array').that.has.lengthOf(3);
+		  	expect(res.body.data.businesses).to.be.an('array').that.has.lengthOf(1);
 		  	done();
 		  });
       });

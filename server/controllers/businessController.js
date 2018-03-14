@@ -1,4 +1,4 @@
-// import Business from '../models/business';
+import Business from '../models/business';
 // import Helper from '../helpers';
 
 
@@ -17,18 +17,21 @@ class BusinessController {
    * @returns {object} res.
    */
   static index(req, res) {
-    // const { q, location, category } = req.query;
+    const { q, location, category } = req.query;
+    let businesses = Business.all();
 
-    /* let message = 'You requested for all businesses';
-    if (q) { message += ` with name as ${q}`; }
-    if (location) { message += ` in ${location}`; }
-    if (category) { message += ` under ${category}`; }
+    if (q) {
+      businesses = Business.nameHas(q);
+    }
+    if (location) { businesses = Business.at(location, businesses); }
+    if (category) { businesses = Business.under(category, businesses); }
 
-    return res.status(200).send({
+    /* return res.status(200).send({
       message,
       error: false,
     }); */
     status = 200;
+    response.data = { businesses };
     return res.status(status).send(response);
   }
 
