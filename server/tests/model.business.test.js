@@ -98,6 +98,11 @@ describe('Model Business', () => {
       done();
     });
 
+    it('should still reflect in later call to it', (done) => {
+      expect(Business.find(1).name).to.equal('New Name');
+      done();
+    });
+
     it('should still return an instance of business', (done) => {
       const b = Business.modify({
         id: 1, nam: 'Noble Computers',
@@ -111,7 +116,7 @@ describe('Model Business', () => {
     });
 
     it('should not change businesses array length', (done) => {
-      expect(Business.all()).to.have.lengthOf(5);
+      expect(Business.all()).to.have.lengthOf(4);
       done();
     });
 

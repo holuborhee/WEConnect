@@ -40,6 +40,22 @@ class Business {
     return newBusiness;
   }
 
+  static modify(props) {
+    let business;
+    props.id && (business = Business.find(props.id)); /* eslint no-unused-expressions: "off" */
+    if (business) {
+      const myB = businesses.find(b => b.id === business.id);
+
+      Object.keys(props).forEach((key) => {
+        if (Object.prototype.hasOwnProperty.call(myB, key)) { myB[key] = props[key]; }
+      });
+
+      return Business.find(myB.id);
+    }
+
+    return null;
+  }
+
   static find(id) {
     const i = parseInt(id, 10);
     const business = businesses.find(b => b.id === i);
