@@ -56,6 +56,19 @@ class Business {
     return null;
   }
 
+  delete() {
+    /* eslint array-callback-return: "off" */
+    /* eslint consistent-return: "off" */
+    businesses.find((b, index, arr) => {
+      /* eslint eqeqeq: "off" */
+      if (b.id == this.id) {
+        arr.splice(index, 1);
+        return true; // Once Item is deleted break out of the search
+      }
+    });
+    return true;
+  }
+
   static find(id) {
     const i = parseInt(id, 10);
     const business = businesses.find(b => b.id === i);

@@ -157,6 +157,25 @@ describe('Model Business', () => {
   });
 
 
+  describe('function delete()', () => {
+    it('should return true after delete', (done) => {
+      const b = Business.find(2);
+      expect(b.delete()).to.be.true;
+      done();
+    });
+
+    it('should reduce the length of array', (done) => {
+      expect(Business.all()).to.have.lengthOf(4);
+      done();
+    });
+
+    it('should return null for find() call on the id', (done) => {
+      expect(Business.find(2)).to.be.null;
+      done();
+    });
+  });
+
+
   describe('get Review', () => {
     describe('function all()', () => {
       it('should return all reviews for a business', (done) => {
