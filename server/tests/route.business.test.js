@@ -75,5 +75,11 @@ describe('Business Routes', () => {
 		  });
       });
     });
+
+
+    describe('POST', () => {
+    	it('should create a new business, return status of 201 and return data with business detail');
+    	it('should return 422 for when required values are missing');
+    });
   });
 });
