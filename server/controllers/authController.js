@@ -2,7 +2,7 @@ import User from '../models/user';
 import Helper from '../helpers';
 
 
-const response = {};
+const response = { status: 'success' };
 /**
   * Authentication Controller
   * @class AuthController
@@ -39,7 +39,30 @@ class AuthController {
      * @returns {object} res.
      */
   static login(req, res) {
-    return res.status(200).send(response);
+    const { email, phone, password } = req.body;
+    let user;
+    if (!email && !phone) {
+      response.status = 'fail';
+      response.data = { email: 'There was no email in request', phone: 'There was no phone in request' };
+      return res.status(422).send(response);
+    } else if (email && phone) {
+      user = User.getByEmailAndPassword(email, password);
+      /* eslint no-unused-expressions: "off" */
+      user.id || (user = User.getByPhoneAndPassword(phone, password));
+    } else if (email) {
+      user = User.getByEmailAndPassword(email, password);
+    } else if (phone) {
+      user = User.getByPhoneAndPassword(phone, password);
+    }
+
+
+    response.status = user.id ? 'success' : 'fail';
+    response.data = user.id ? { user } : user;
+    const status = user.id ? 200 : 401;
+
+    if (!user.id) { user = User.getByPhoneAndPassword(phone, password); }
+
+    return res.status(status).send(response);
   }
 
 
