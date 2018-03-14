@@ -80,7 +80,7 @@ describe('Model User', () => {
   		User.add({
         name: 'Adekunle Ajasin', phone: '08052356173', email: 'rosaline@gmail.com', password: 'password',
       });
-      expect(User.all()).to.be.length(6);
+      expect(User.all()).to.be.length(5);
       done();
     });
 
@@ -97,7 +97,7 @@ describe('Model User', () => {
         phone: '08052356173', email: 'rosaline@gmail.com', password: 'password',
       });
       expect(user).to.be.null;
-      expect(User.all()).to.be.length(7);
+      expect(User.all()).to.be.length(6);
       done();
     });
   });
