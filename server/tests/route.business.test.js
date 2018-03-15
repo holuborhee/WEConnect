@@ -118,4 +118,11 @@ describe('Business Routes', () => {
       });
     });
   });
+
+  describe('/businesses:id', () => {
+  	describe('GET', () => {
+  	  it('should return 404 for id not found');
+  	  it('should return 200 for id present and data of business');
+  	});
+  });
 });
