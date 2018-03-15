@@ -239,5 +239,43 @@ describe('Business Routes', () => {
   	  	  });
   	  });
   	});
+
+  	describe('POST', () => {
+  	  it('should return 201 and returned the review created', (done) => {
+        chai.request(app)
+		  .post(`${BASE_URL}/3/reviews`)
+		  .send({ rating: 4.5, comment: 'This is demo review', reviewer: 'Jose Barack' })
+		  .end((err, res) => {
+            expect(res).to.have.status(201);
+            expect(res.body.status).to.equal('success');
+            expect(res.body.data).to.be.an('object').that.has.key('review');
+            expect(res.body.data.review.id).to.equal(5);
+            expect(res.body.data.review.business).to.equal(3);
+            done();
+		  });
+  		});
+  	  it('should return return fail and status 404 when business id not found', (done) => {
+  	  	chai.request(app)
+  	  	  .post(`${BASE_URL}/9/reviews`)
+  	  	  .send({ rating: 4.5, comment: 'This is demo review', reviewer: 'Jose Barack' })
+  	  	  .end((err, res) => {
+  	  	  	expect(res).to.have.status(404);
+  	  	  	expect(res.body.status).to.equal('fail');
+  	  	  	expect(res.body.data).to.have.key('id');
+  	  	  	done();
+  	  	  });
+  	  });
+  	  it('should return fail and status 422, when required field is missing for request', (done) => {
+  	  	chai.request(app)
+  	  	  .post(`${BASE_URL}/4/reviews`)
+  	  	  .send({ comment: 'This is demo review' })
+  	  	  .end((err, res) => {
+  	  	  	expect(res).to.have.status(200);
+            expect(res.body.status).to.equal('success');
+            expect(res.body.data).to.be.an('object').that.has.all.keys('reviewer', 'rating');
+            done();
+  	  	  });
+  	  });
+  	});
   });
 });
