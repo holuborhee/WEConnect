@@ -249,7 +249,7 @@ describe('Business Routes', () => {
             expect(res).to.have.status(201);
             expect(res.body.status).to.equal('success');
             expect(res.body.data).to.be.an('object').that.has.key('review');
-            expect(res.body.data.review.id).to.equal(5);
+            expect(res.body.data.review.id).to.equal(7);
             expect(res.body.data.review.business).to.equal(3);
             done();
 		  });
@@ -270,8 +270,8 @@ describe('Business Routes', () => {
   	  	  .post(`${BASE_URL}/4/reviews`)
   	  	  .send({ comment: 'This is demo review' })
   	  	  .end((err, res) => {
-  	  	  	expect(res).to.have.status(200);
-            expect(res.body.status).to.equal('success');
+  	  	  	expect(res).to.have.status(422);
+            expect(res.body.status).to.equal('fail');
             expect(res.body.data).to.be.an('object').that.has.all.keys('reviewer', 'rating');
             done();
   	  	  });

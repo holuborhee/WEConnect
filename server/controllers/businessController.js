@@ -147,9 +147,33 @@ class BusinessController {
     return res.status(status).send(response);
   }
 
-  /* static newReview(req, res) {
+  static newReview(req, res) {
+    const { id } = req.params;
+
+    const business = Business.find(id);
+    if (business) {
+      /* Implementation here will be refractored to a ReviewController */
+      const required = ['reviewer', 'comment', 'rating'];
+      const resp = Helper.validateRequiredInRequest(req.body, required);
+      if (resp !== true) {
+        response.data = resp.data;
+        response.status = resp.status;
+        status = 422;
+      } else {
+        const { reviewer, comment, rating } = req.body;
+        const review = business.review.add({ reviewer, comment, rating });
+        response.data = { review };
+        response.status = 'success';
+        status = 201;
+      }
+    } else {
+      response.data = { id: `No resource could be found for ${id} on the server` };
+      response.status = 'fail';
+      status = 404;
+    }
+
     return res.status(status).send(response);
-  } */
+  }
 }
 
 export default BusinessController;
