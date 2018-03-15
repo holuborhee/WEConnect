@@ -142,5 +142,10 @@ describe('Business Routes', () => {
   	  	  });
   	  });
   	});
+
+  	describe('PUT', () => {
+  		it('should return fail and 404 if id not found on server');
+  		it('should return success and current data of business');
+  	});
   });
 });
