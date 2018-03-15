@@ -46,12 +46,20 @@ class BusinessController {
   static create(req, res) {
     const required = ['name', 'user', 'category', 'latitude', 'longitude', 'address'];
     const resp = Helper.validateRequiredInRequest(req.body, required);
-    if (response !== true) {
+    if (resp !== true) {
       response.data = resp.data;
       response.status = resp.status;
       status = 422;
     } else {
-      // const { name, user, category } = req.body;
+      const {
+        name, user, category, latitude, longitude, address,
+      } = req.body;
+      const business = Business.add({
+        name, user, category, latitude, longitude, address,
+      });
+      response.data = { business };
+      response.status = 'success';
+      status = 201;
     }
 
 

@@ -28,7 +28,7 @@ class Business {
     return new Review(this.id);
   }
 
-  static create(props) {
+  static add(props) {
     const b = props;
     b.id = businesses.length + 1;
     let newBusiness;

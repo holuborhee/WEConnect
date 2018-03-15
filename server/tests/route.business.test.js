@@ -94,7 +94,7 @@ describe('Business Routes', () => {
 		  .end((err, res) => {
             expect(res).to.have.status(201);
             expect(res.body.status).to.equal('success');
-            expect(res.body.data.business.id).to.equal(6);
+            expect(res.body.data.business.id).to.equal(5);
             done();
           });
       });
