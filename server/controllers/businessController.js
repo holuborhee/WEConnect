@@ -112,7 +112,7 @@ class BusinessController {
   static destroy(req, res) {
   	const { id } = req.params;
 
-  	res.send(204).send(`You want to delete business with id of ${id}`);
+  	res.status(204).send(`You want to delete business with id of ${id}`);
   }
 }
 
