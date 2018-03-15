@@ -46,7 +46,7 @@ class Business {
     const myB = businesses.find(b => b.id == this.id);
 
     Object.keys(props).forEach((key) => {
-      if (Object.prototype.hasOwnProperty.call(myB, key)) { myB[key] = props[key]; }
+      if (Object.prototype.hasOwnProperty.call(myB, key) && key != 'id') { myB[key] = props[key]; }
     });
 
     return Business.find(myB.id);

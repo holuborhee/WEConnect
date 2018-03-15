@@ -86,9 +86,10 @@ describe('Model Business', () => {
 
 
   describe('function modify()', () => {
+    let b = Business.find(1);
     it('should return an instance of business', (done) => {
-      const b = Business.modify({
-        id: 1, name: 'New Name',
+      b = b.modify({
+        name: 'New Name',
       });
 
       expect(b).to.be.an.instanceOf(Business);
@@ -104,8 +105,8 @@ describe('Model Business', () => {
     });
 
     it('should still return an instance of business', (done) => {
-      const b = Business.modify({
-        id: 1, nam: 'Noble Computers',
+      b = b.modify({
+        nam: 'Noble Computers',
       });
 
       expect(b).to.be.an.instanceOf(Business);
@@ -120,11 +121,15 @@ describe('Model Business', () => {
       done();
     });
 
-    it('should return a null when parameter does not contain id', (done) => {
-      const b = Business.modify({
-        user: 1, category: 4, latitude: 3.142, longitude: 4.5678, address: '31, Mbaise Road, Owerri',
+    it('should ignore id in parameter', (done) => {
+      b = b.modify({
+        id: 5, name: 'Another Name',
       });
-      expect(b).to.be.null; /* eslint no-unused-expressions: "off" */
+
+      expect(b).to.be.an.instanceOf(Business);
+      expect(b.id).to.equal(1);
+      expect(b.name).to.equal('Another Name');
+      expect(b.address).to.equal('31, Mbaise Road, Owerri');
       done();
     });
   });
