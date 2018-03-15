@@ -62,9 +62,7 @@ class AuthController {
     response.data = user.id ? { user } : user;
     const status = user.id ? 200 : 401;
     if (user.id) {
-      console.log(`Pasword : ${response.data.user.password}`);
       delete response.data.user.password;
-      console.log(`Password : ${response.data.user.password}`);
     }
 
     return res.status(status).send(response);

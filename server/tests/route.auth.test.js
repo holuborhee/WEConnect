@@ -88,12 +88,12 @@ describe('Authentication Routes', () => {
         chai.request(app)
           .post(path)
           .send({
-            phone: '08164488989', password: 'password',
+            phone: '07051398099', password: 'password',
           })
           .end((err, res) => {
             expect(res).to.have.status(200);
             expect(res.body.status).to.equal('success');
-            expect(res.body.data.user).to.include({ name: 'Olubori David' });
+            expect(res.body.data.user).to.include({ name: 'Anderson Bulugbe' });
             done();
           });
       });
