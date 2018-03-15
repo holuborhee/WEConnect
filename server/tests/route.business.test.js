@@ -208,9 +208,36 @@ describe('Business Routes', () => {
   });
   describe('/businesses/:id/reviews', () => {
   	describe('GET', () => {
-  		it('should return all return review for the business');
-  		it('should return return fail and status 404 when business id not found');
-  		it('should return success when no review for business');
+  	  it('should return all review for the business', (done) => {
+        chai.request(app)
+		  .get(`${BASE_URL}/3/reviews`)
+		  .end((err, res) => {
+            expect(res).to.have.status(200);
+            expect(res.body.status).to.equal('success');
+            expect(res.body.data.reviews).to.be.an('array').that.has.lengthOf(1);
+            done();
+		  });
+  		});
+  	  it('should return return fail and status 404 when business id not found', (done) => {
+  	  	chai.request(app)
+  	  	  .get(`${BASE_URL}/9/reviews`)
+  	  	  .end((err, res) => {
+  	  	  	expect(res).to.have.status(404);
+  	  	  	expect(res.body.status).to.equal('fail');
+  	  	  	expect(res.body.data).to.have.key('id');
+  	  	  	done();
+  	  	  });
+  	  });
+  	  it('should return success when no review for business', (done) => {
+  	  	chai.request(app)
+  	  	  .get(`${BASE_URL}/4/reviews`)
+  	  	  .end((err, res) => {
+  	  	  	expect(res).to.have.status(200);
+            expect(res.body.status).to.equal('success');
+            expect(res.body.data.reviews).to.be.an('array').that.has.lengthOf(0);
+            done();
+  	  	  });
+  	  });
   	});
   });
 });

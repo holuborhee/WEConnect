@@ -17,7 +17,7 @@ app.route('/businesses/:id')
   .put(BusinessController.update);
 
 app.route('/businesses/:id/reviews')
-  .get((req, res) => res.json({ message: `This is to get all reviews of business with id of ${req.params.id}` }))
+  .get(BusinessController.allReviews)
   .post((req, res) => res.json({ message: `This is to post a new review for business with id of ${req.params.id}` }));
 
 
