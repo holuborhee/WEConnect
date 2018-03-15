@@ -24,6 +24,8 @@ describe('Authentication Routes', () => {
             expect(res).to.have.status(201);
             expect(res.body.status).to.equal('success');
             expect(res.body.data.user).to.include({ name: 'John David' });
+            expect(res.body.data.user).not.to.have.property('password');
+            expect(res.body.data.user).not.to.have.property('confirmPassword');
             done();
           });
       });
@@ -76,6 +78,8 @@ describe('Authentication Routes', () => {
             expect(res).to.have.status(200);
             expect(res.body.status).to.equal('success');
             expect(res.body.data.user).to.include({ name: 'Olubori David' });
+            expect(res.body.data.user).not.to.have.property('password');
+            expect(res.body.data.user).not.to.have.property('confirmPassword');
             done();
           });
       });
