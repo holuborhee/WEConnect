@@ -198,7 +198,7 @@ describe('Business Routes', () => {
   			chai.request(app)
   			  .delete(`${BASE_URL}/1`)
   	  	      .end((err, res) => {
-  	  	  	    expect(res).to.have.status(204);
+  	  	  	    expect(res).to.have.status(200);
   	  	  	    expect(res.body.status).to.equal('success');
   	  	  	    expect(res.body.data).to.be.null; /* eslint no-unused-expressions: "off" */
   	  	  	    done();
