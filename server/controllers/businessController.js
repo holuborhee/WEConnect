@@ -68,10 +68,17 @@ class BusinessController {
   static update(req, res) {
     const { id } = req.params;
 
-    res.status(200).send({
-    	message: `You want to update business with id of ${id}`,
-    	error: false,
-    });
+    let business = Business.find(id);
+    if (business) {
+      business = business.modify(req.body);
+    } else {
+      response.data = { id: `No resource could be found for ${id} on the server` };
+      response.status = 'fail';
+      status = 404;
+    }
+
+
+    return res.status(status).send(response);
   }
 
 
