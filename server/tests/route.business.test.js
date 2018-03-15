@@ -78,8 +78,44 @@ describe('Business Routes', () => {
 
 
     describe('POST', () => {
-    	it('should create a new business, return status of 201 and return data with business detail');
-    	it('should return 422 for when required values are missing');
+      it('should create a new business, return status of 201 and return data with business detail', (done) => {
+    	const business = {
+	        id: 1,
+	        name: 'Walmart',
+	        user: 1,
+	        category: 4,
+	        latitude: 3.142,
+	        longitude: 4.5678,
+	        address: 'Agidingbi, Ikeja, Lagos.',
+        };
+        chai.request(app)
+		  .post(BASE_URL)
+		  .send(business)
+		  .end((err, res) => {
+            expect(res).to.have.status(201);
+            expect(res.body.status).to.equal('success');
+            expect(res.body.data.business.id).to.equal(6);
+            done();
+          });
+      });
+      it('should return 422 for when required values are missing', (done) => {
+      	const business = {
+	        id: 1,
+	        name: 'Walmart',
+	        latitude: 3.142,
+	        longitude: 4.5678,
+	        address: 'Agidingbi, Ikeja, Lagos.',
+        };
+        chai.request(app)
+		  .post(BASE_URL)
+		  .send(business)
+		  .end((err, res) => {
+            expect(res).to.have.status(422);
+            expect(res.body.status).to.equal('fail');
+            expect(res.body.data).to.have.all.keys('user', 'category');
+            done();
+          });
+      });
     });
   });
 });
