@@ -206,4 +206,11 @@ describe('Business Routes', () => {
   		});
   	});
   });
+  describe('/businesses/:id/reviews', () => {
+  	describe('GET', () => {
+  		it('should return all return review for the business');
+  		it('should return return fail and status 404 when business id not found');
+  		it('should return success when no review for business');
+  	});
+  });
 });
