@@ -4,7 +4,7 @@
 
 class Helper {
   static propsNotIn(obj, props) {
-    return props.filter(p => !Object.prototype.hasOwnProperty.call(obj, p));
+    return props.filter(p => !Object.prototype.hasOwnProperty.call(obj, p) || obj[p] === '');
   }
 
 
