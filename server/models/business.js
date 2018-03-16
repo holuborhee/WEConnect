@@ -5,6 +5,8 @@ import Review from './review';
 const { businesses } = db;
 
 class Business {
+  /* IMPORTANT: To implement get avarage Rating function/getter */
+
   constructor(props) {
     const required = ['id', 'name', 'user', 'category', 'latitude', 'longitude', 'address'];
     if (!props) {
@@ -26,7 +28,7 @@ class Business {
     return new Review(this.id);
   }
 
-  static create(props) {
+  static add(props) {
     const b = props;
     b.id = businesses.length + 1;
     let newBusiness;

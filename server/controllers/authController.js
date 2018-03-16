@@ -68,14 +68,10 @@ class AuthController {
 
   static validateRegister(requestBody) {
     const required = ['name', 'email', 'phone', 'password', 'confirmPassword'];
-    const notFound = Helper.propsNotIn(requestBody, required);
-    if (notFound.length > 0) {
-      response.status = 'fail';
-      response.data = {};
-      /* eslint array-callback-return: "off" */
-      notFound.map((el) => {
-        response.data[el] = `${el} is required`;
-      });
+    const resp = Helper.validateRequiredInRequest(requestBody, required);
+    if (resp !== true) {
+      response.status = resp.status;
+      response.data = resp.data;
       return false;
     } else if (requestBody.password !== requestBody.confirmPassword) {
       response.status = 'fail';

@@ -129,9 +129,9 @@ describe('Model Business', () => {
     });
   });
 
-  describe('function create()', () => {
-    it('create should return an instance of business', (done) => {
-      const b = Business.create({
+  describe('function add()', () => {
+    it('add should return an instance of business', (done) => {
+      const b = Business.add({
         name: 'Noble Computers', user: 1, category: 4, latitude: 3.142, longitude: 4.5678, address: '31, Mbaise Road, Owerri',
       });
 
@@ -140,13 +140,13 @@ describe('Model Business', () => {
       done();
     });
 
-    it('create should populate businesses array', (done) => {
+    it('add should populate businesses array', (done) => {
       expect(Business.all()).to.have.lengthOf(5);
       done();
     });
 
-    it('create should return a null', (done) => {
-      const b = Business.create({
+    it('add should return a null', (done) => {
+      const b = Business.add({
         user: 1, category: 4, latitude: 3.142, longitude: 4.5678, address: '31, Mbaise Road, Owerri',
       });
 
@@ -194,5 +194,10 @@ describe('Model Business', () => {
         done();
       });
     });
+  });
+
+
+  describe('get AverageRating', () => {
+    it('should calculate and return avarage rating for a business');
   });
 });

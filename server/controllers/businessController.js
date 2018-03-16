@@ -1,5 +1,5 @@
 import Business from '../models/business';
-// import Helper from '../helpers';
+import Helper from '../helpers';
 
 
 const response = { status: 'success' };
@@ -44,22 +44,26 @@ class BusinessController {
    * @returns {object} res.
    */
   static create(req, res) {
-    const {
-      name,
-    } = req.body;
-
-    if (!req.body.name) {
-      return res.status(400).send({
-        message: 'Business Name Missing',
-        error: true,
+    const required = ['name', 'user', 'category', 'latitude', 'longitude', 'address'];
+    const resp = Helper.validateRequiredInRequest(req.body, required);
+    if (resp !== true) {
+      response.data = resp.data;
+      response.status = resp.status;
+      status = 422;
+    } else {
+      const {
+        name, user, category, latitude, longitude, address,
+      } = req.body;
+      const business = Business.add({
+        name, user, category, latitude, longitude, address,
       });
+      response.data = { business };
+      response.status = 'success';
+      status = 201;
     }
 
 
-    return res.status(201).send({
-      message: `You want to create a business with name as ${name}`,
-      error: false,
-    });
+    return res.status(status).send(response);
   }
 
   /**
