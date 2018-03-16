@@ -6,7 +6,7 @@ import routes from './routes/index';
 
 const app = express();
 
-const port = 8080;
+const port = process.env.PORT || 8080;
 
 // parse application/json and look for raw text
 app.use(bodyParser.json());

@@ -142,5 +142,44 @@ describe('Business Routes', () => {
   	  	  });
   	  });
   	});
+
+  	describe('PUT', () => {
+  		it('should return fail and 404 if id not found on server', (done) => {
+  		  chai.request(app)
+  	  	  .put(`${BASE_URL}/9`)
+  	  	  .send({ name: 'Another name' })
+  	  	  .end((err, res) => {
+  	  	  	expect(res).to.have.status(404);
+  	  	  	expect(res.body.status).to.equal('fail');
+  	  	  	expect(res.body.data).to.have.key('id');
+  	  	  	done();
+  	  	  });
+  		});
+  		it('should return success and current data of business', (done) => {
+  			chai.request(app)
+  			  .put(`${BASE_URL}/1`)
+  	  	      .send({ name: 'Another name' })
+  	  	      .end((err, res) => {
+  	  	  	    expect(res).to.have.status(200);
+  	  	  	    expect(res.body.status).to.equal('success');
+  	  	  	    expect(res.body.data).to.have.key('business');
+  	  	  	    expect(res.body.data.business.id).to.equal(1);
+  	  	  	    done();
+  	  	      });
+  		});
+
+  		it('should ignore id in request body', (done) => {
+  			chai.request(app)
+  			  .put(`${BASE_URL}/1`)
+  	  	      .send({ id: 2, name: 'Manchester Lounge' })
+  	  	      .end((err, res) => {
+  	  	  	    expect(res).to.have.status(200);
+  	  	  	    expect(res.body.status).to.equal('success');
+  	  	  	    expect(res.body.data).to.have.key('business');
+  	  	  	    expect(res.body.data.business.id).to.equal(1);
+  	  	  	    done();
+  	  	      });
+  		});
+  	});
   });
 });
