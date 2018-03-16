@@ -34,7 +34,9 @@ describe('Model User', () => {
 
   describe('function getByPhone()', () => {
     it('should return an object', (done) => {
-      expect(User.getByPhone('08164488989')).to.be.an('object');
+      const user = User.getByPhone('08164488989');
+      expect(user).to.be.an('object').that.has.property('phone');
+      expect(user).to.be.an('object').that.has.property('password');
       done();
     });
 
@@ -48,7 +50,11 @@ describe('Model User', () => {
 
   describe('function getByPhoneAndPassword()', () => {
     it('should return an object', (done) => {
-      expect(User.getByPhoneAndPassword('08164488989', 'password')).to.be.an('object');
+      const user = User.getByPhoneAndPassword('08164488989', 'password');
+      expect(user).to.be.an('object').that.has.property('phone');
+      expect(user).to.be.an('object').that.has.property('email');
+      expect(user).to.be.an('object').that.has.property('password');
+      expect(user.password).to.equal('password');
       done();
     });
 
