@@ -100,6 +100,7 @@ db.reviews = [{
   rating: 4.5,
   comment: 'This is my review with no value',
   business: 1,
+  reviewer: 'Bredan Rogers',
 }, {
   id: 3,
   rating: 3.5,

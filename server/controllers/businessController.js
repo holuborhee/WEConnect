@@ -127,6 +127,29 @@ class BusinessController {
 
     return res.status(status).send(response);
   }
+
+  static allReviews(req, res) {
+    const { id } = req.params;
+
+    const business = Business.find(id);
+    if (business) {
+      const reviews = business.review.all();
+      response.data = { reviews };
+      response.status = 'success';
+      status = 200;
+    } else {
+      response.data = { id: `No resource could be found for ${id} on the server` };
+      response.status = 'fail';
+      status = 404;
+    }
+
+
+    return res.status(status).send(response);
+  }
+
+  /* static newReview(req, res) {
+    return res.status(status).send(response);
+  } */
 }
 
 export default BusinessController;
