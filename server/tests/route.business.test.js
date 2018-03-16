@@ -181,5 +181,29 @@ describe('Business Routes', () => {
   	  	      });
   		});
   	});
+
+
+  	describe('DELETE', () => {
+  		it('should return fail and 404 if id not found on server', (done) => {
+  		  chai.request(app)
+  	  	  .delete(`${BASE_URL}/9`)
+  	  	  .end((err, res) => {
+  	  	  	expect(res).to.have.status(404);
+  	  	  	expect(res.body.status).to.equal('fail');
+  	  	  	expect(res.body.data).to.have.key('id');
+  	  	  	done();
+  	  	  });
+  		});
+  		it('should return success and data of null', (done) => {
+  			chai.request(app)
+  			  .delete(`${BASE_URL}/1`)
+  	  	      .end((err, res) => {
+  	  	  	    expect(res).to.have.status(200);
+  	  	  	    expect(res.body.status).to.equal('success');
+  	  	  	    expect(res.body.data).to.be.null; /* eslint no-unused-expressions: "off" */
+  	  	  	    done();
+  	  	      });
+  		});
+  	});
   });
 });

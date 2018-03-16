@@ -112,7 +112,20 @@ class BusinessController {
   static destroy(req, res) {
   	const { id } = req.params;
 
-  	res.send(204).send(`You want to delete business with id of ${id}`);
+  	let business = Business.find(id);
+    if (business) {
+      business = business.delete();
+      response.data = null;
+      response.status = 'success';
+      status = 200;
+    } else {
+      response.data = { id: `No resource could be found for ${id} on the server` };
+      response.status = 'fail';
+      status = 404;
+    }
+
+
+    return res.status(status).send(response);
   }
 }
 
