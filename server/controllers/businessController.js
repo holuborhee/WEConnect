@@ -19,17 +19,9 @@ class BusinessController {
   static index(req, res) {
     const { q, location, category } = req.query;
     let businesses = Business.all();
-
-    if (q) {
-      businesses = Business.nameHas(q);
-    }
+    if (q) { businesses = Business.nameHas(q); }
     if (location) { businesses = Business.at(location, businesses); }
     if (category) { businesses = Business.under(category, businesses); }
-
-    /* return res.status(200).send({
-      message,
-      error: false,
-    }); */
     status = 200;
     response.data = { businesses };
     return res.status(status).send(response);
@@ -92,11 +84,11 @@ class BusinessController {
    */
   static show(req, res) {
   	const { id } = req.params;
-
-    res.status(200).send({
-    	message: `Return details of business with id of ${id}`,
-    	error: false,
-    });
+    const business = Business.find(id);
+    response.data = business ? { business } : { id: `No resource could be found for ${id} on the server` };
+    response.status = business ? 'success' : 'fail';
+    status = business ? 200 : 404;
+    return res.status(status).send(response);
   }
 
 

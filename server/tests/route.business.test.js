@@ -118,4 +118,29 @@ describe('Business Routes', () => {
       });
     });
   });
+
+  describe('/businesses/:id', () => {
+  	describe('GET', () => {
+  	  it('should return 404 for id not found', (done) => {
+  	  	chai.request(app)
+  	  	  .get(`${BASE_URL}/8`)
+  	  	  .end((err, res) => {
+  	  	  	expect(res).to.have.status(404);
+  	  	  	expect(res.body.status).to.equal('fail');
+  	  	  	expect(res.body.data).to.have.key('id');
+  	  	  	done();
+  	  	  });
+  	  });
+  	  it('should return 200 for id present and data of business', (done) => {
+  	  	chai.request(app)
+  	  	  .get(`${BASE_URL}/1`)
+  	  	  .end((err, res) => {
+  	  	  	expect(res).to.have.status(200);
+  	  	  	expect(res.body.status).to.equal('success');
+  	  	  	expect(res.body.data).to.have.key('business');
+  	  	  	done();
+  	  	  });
+  	  });
+  	});
+  });
 });
