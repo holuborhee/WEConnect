@@ -7,7 +7,7 @@ chai.use(chaiHttp);
 const BASE_URL = '/api/v1';
 
 
-describe('test for routes', () => {
+describe('Authentication Routes', () => {
   // Path auth/signup
   describe(`${BASE_URL}/auth/signup`, () => {
     // Method POST
