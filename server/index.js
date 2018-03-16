@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import logger from 'morgan';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from '../swagger.json';
 import routes from './routes/index';
@@ -8,6 +9,7 @@ const app = express();
 
 const port = process.env.PORT || 8080;
 
+app.use(logger('dev'));
 // parse application/json and look for raw text
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
