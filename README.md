@@ -1,7 +1,11 @@
 # WEConnect 
 
-[![Build Status](https://travis-ci.org/holuborhee/WEConnect.svg?branch=ft-challenge2-server)](https://travis-ci.org/holuborhee/WEConnect)
-[![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/holuborhee/WEConnect)
+<<<<<<< HEAD
+[![Build Status](https://travis-ci.org/holuborhee/WEConnect.svg?branch=develop)](https://travis-ci.org/holuborhee/WEConnect)
+[![Maintainability](https://api.codeclimate.com/v1/badges/e0aa8b61ece87953e078/maintainability)](https://codeclimate.com/github/holuborhee/WEConnect/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/e0aa8b61ece87953e078/test_coverage)](https://codeclimate.com/github/holuborhee/WEConnect/test_coverage)
+[![Coverage Status](https://coveralls.io/repos/github/Rhotimee/weconnect/badge.svg)](https://coveralls.io/github/Rhotimee/weconnect)
+
 
 [Live Preview](https://holuborhee.github.io/WEConnect/)
 

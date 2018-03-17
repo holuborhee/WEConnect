@@ -1,17 +1,29 @@
 import express from 'express';
-import UserController from '../controllers/userController';
+import { BusinessController, AuthController } from '../controllers';
 
 
 const app = express();
 // const router = express.Router();
 
 
-app.route('/user')
-  .post(UserController.create)
-  .get((req, res) => res.status(200).send({ message: 'Implement function to get all users here' }));
+app.route('/businesses')
+  .post(BusinessController.create)
+  .get(BusinessController.index);
 
-app.route('/user/:id')
-  .get(UserController.show);
+
+app.route('/businesses/:id')
+  .delete(BusinessController.destroy)
+  .get(BusinessController.show)
+  .put(BusinessController.update);
+
+app.route('/businesses/:id/reviews')
+  .get(BusinessController.allReviews)
+  .post(BusinessController.newReview);
+
+
+app.post('/auth/signup', AuthController.register);
+
+app.post('/auth/login', AuthController.login);
 
 
 export default app;
