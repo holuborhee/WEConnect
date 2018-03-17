@@ -1,6 +1,5 @@
 # WEConnect 
 
-<<<<<<< HEAD
 [![Build Status](https://travis-ci.org/holuborhee/WEConnect.svg?branch=develop)](https://travis-ci.org/holuborhee/WEConnect)
 [![Maintainability](https://api.codeclimate.com/v1/badges/e0aa8b61ece87953e078/maintainability)](https://codeclimate.com/github/holuborhee/WEConnect/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/e0aa8b61ece87953e078/test_coverage)](https://codeclimate.com/github/holuborhee/WEConnect/test_coverage)
