@@ -17,6 +17,11 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({ type: 'application/json' }));
 
 
+app.route('/')
+  .get((req, res) => {
+    res.redirect('/docs');
+  });
+
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use('/api/v1', routes);
