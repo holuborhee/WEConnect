@@ -8,6 +8,16 @@ html, body {
   font-family: open-sans,Roboto;
 }
 
+header {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+header > div {
+	margin-left: 5rem;
+	margin-right: 5rem;
+}
+
 #home-search {
     height: 40%;
     margin-left: 0px;
