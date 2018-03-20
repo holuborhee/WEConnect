@@ -27,7 +27,7 @@ header > div {
 #home-cat-listing {
     height: 60%;
     margin-right: 0px;
-    margin-right: 0px;
+    margin-left: 0px;
 }
 
 .business-card {
@@ -86,6 +86,9 @@ a:hover {
   color: #2F80ED;
 }
 
+.txt-white {
+	color: white;
+}
 
 .px-0 {
  padding-right: 0px !important;
@@ -107,6 +110,15 @@ a:hover {
 .small {
 	font-size: small;
 }
+
+.large {
+	font-size: larger;
+}
+
+.x-large {
+	font-size: x-large;
+}
+
 
 .flex {
 	display: flex;
@@ -142,5 +154,180 @@ a:hover {
 
 .align-items-center {
 	align-items: center;
+}
+
+.input-field {
+	width: 100%;
+}
+
+
+.s1 {
+  width: 8.3333333333%;
+}
+
+.s2 {
+  width: 16.6666666667%;
+}
+
+.s3 {
+  width: 25%;
+}
+
+.s4 {
+  width: 33.3333333333%;
+}
+
+.s5 {
+  width: 41.6666666667%;
+}
+
+.s6 {
+  width: 50%;
+}
+
+.s7 {
+  width: 58.3333333333%;
+}
+
+.s8 {
+  width: 66.6666666667%;
+}
+
+.s9 {
+  width: 75%;
+}
+
+.s10 {
+  width: 83.3333333333%;
+}
+
+.s11 {
+  width: 91.6666666667%;
+}
+
+.s12 {
+  width: 100%;
+}
+
+
+@media only screen and (min-width: 601px) {
+  .m1 {
+    width: 8.3333333333%;
+  }
+  .m2 {
+    width: 16.6666666667%;
+  }
+  .m3 {
+    width: 25%;
+  }
+  .m4 {
+    width: 33.3333333333%;
+  }
+  .m5 {
+    width: 41.6666666667%;
+  }
+  .m6 {
+    width: 50%;
+  }
+  .m7 {
+    width: 58.3333333333%;
+  }
+  .m8 {
+    width: 66.6666666667%;
+  }
+  .m9 {
+    width: 75%;
+  }
+  .m10 {
+    width: 83.3333333333%;
+  }
+  .m11 {
+    width: 91.6666666667%;
+  }
+  .m12 {
+    width: 100%;
+  }
+  
+}
+
+@media only screen and (min-width: 993px) {
+  .l1 {
+    width: 8.3333333333%;
+  }
+  .l2 {
+    width: 16.6666666667%;
+  }
+  .l3 {
+    width: 25%;
+  }
+  .l4 {
+    width: 33.3333333333%;
+  }
+  .l5 {
+    width: 41.6666666667%;
+  }
+  .l6 {
+    width: 50%;
+  }
+  .l7 {
+    width: 58.3333333333%;
+  }
+  .l8 {
+    width: 66.6666666667%;
+  }
+  .l9 {
+    width: 75%;
+  }
+  .l10 {
+    width: 83.3333333333%;
+  }
+  .l11 {
+    width: 91.6666666667%;
+  }
+  .l12 {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1201px) {
+  .xl1 {
+    width: 8.3333333333%;
+
+  }
+  .xl2 {
+    width: 16.6666666667%;
+
+  }
+  .xl3 {
+    width: 25%;
+
+  }
+  .xl4 {
+    width: 33.3333333333%;
+  }
+  .xl5 {
+    width: 41.6666666667%;
+  }
+  .xl6 {
+    width: 50%;
+  }
+  .xl7 {
+    width: 58.3333333333%;
+  }
+  .xl8 {
+    width: 66.6666666667%;
+  }
+  .xl9 {
+    width: 75%;
+  }
+  .xl10 {
+    width: 83.3333333333%;
+  }
+  .xl11 {
+    width: 91.6666666667%;
+  }
+ .xl12 {
+    width: 100%;
+  }
 }
 
