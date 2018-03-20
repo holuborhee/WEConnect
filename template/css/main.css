@@ -61,8 +61,17 @@ header > div {
     margin-left: 10px;
 }
 
+.input-field {
+	width: 100%;
+}
+
+
 a:hover {
  text-decoration: underline;
+}
+
+.logo:hover {
+  text-decoration: none !important;
 }
 
 .bg-primary {
@@ -71,6 +80,14 @@ a:hover {
 
 .bg-blue {
  background-color: #2F80ED;
+}
+
+.bg-blue:hover {
+  background-color: #1d5eb5;
+}
+
+.bg-blue:focus {
+  background-color: #1d5eb5;
 }
 
 
@@ -156,9 +173,14 @@ a:hover {
 	align-items: center;
 }
 
-.input-field {
+.align-self-end {
+  align-self: flex-end;
+}
+
+.w-100 {
 	width: 100%;
 }
+
 
 
 .s1 {
