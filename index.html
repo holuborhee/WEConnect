@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <link rel="stylesheet" type="text/css" href="css/main.css">
+      <style type="text/css">
+        #app, .main {
+          height: 100%;
+        }
+      </style>
+    </head>
+
+    <body>
+      <section id="app" class="flex column-flex justify-space-between">
+        <header class="bg-primary">
+          <div class="flex justify-space-between">
+            <span></span>
+            <span></span>
+            <div class="bg-primary nav">
+              <a href="login.html" class="txt-secondary">Login</a>
+              <a href="register.html" class="txt-secondary">Signup</a>
+            </div>
+         </div>
+        </header>
+        <main class="main flex column-flex">
+          <section id="home-search" class="bg-primary section row flex">
+              <div class="col s12 m10 l8 mxy-auto center-align">
+                <h2><span class="txt-blue">We</span><span class="txt-green">Connect</span></h2>
+                <p class="lead txt-secondary">WeConnect provides a platform that brings businesses and individuals together</p>
+                <div class="input-field">
+                  <input placeholder="First name" id="first_name" type="text" class="validate">
+                  <label for="first_name">First Name</label>
+                </div>
+              </div>
+          </section>
+          <section id="home-cat-listing" class="section row flex">
+           
+              <div class="col s12 m10 l8 mxy-auto">
+                <h5>Categories</h5>
+                <div class="flex wrap row px-0 ml-0 justify-space-between">
+                  <div class="card business-card ml-0 col m3 l2 s5">
+                    <div class="card-image">
+                      <img src="images/cover.jpg">
+                    </div>
+                      <h6 class="card-title txt-green">Info Tech</h6>
+                      <div class="right-align">
+                          <span>200</span>
+                      </div>
+
+
+                  </div>
+                  <div class="card business-card ml-0 col m3 l2 s5">
+                    <div class="card-image">
+                      <img src="images/business1.jpg">
+                    </div>
+                    <h6 class="card-title txt-green">Co-working</h6>
+                      <div class="right-align">
+                          <span>250</span>
+                      </div>
+                  </div>
+                  <div class="card business-card ml-0 col m3 l2 hide-on-small-only">
+                    <div class="card-image">
+                      <img src="images/business3.jpg">
+                    </div>
+                    <h6 class="card-title txt-green">Fashion</h6>
+                      <div class="right-align">
+                          <span>312</span>
+                      </div>
+                  </div>
+                  <div class="card business-card ml-0 col l2 hide-on-med-and-down">
+                    <div class="card-image">
+                      <img src="images/business2.jpg">
+                    </div>
+                      <h6 class="card-title txt-green">Bar</h6>
+                      <div class="right-align">
+                          <span>400</span>
+                      </div>
+                  </div>
+
+                </div>
+              </div>
+          </section>
+        </main>
+        <footer class="bg-primary flex justify-space-evenly">
+          <p class="small">
+            <a class="txt-secondary" href="newbusiness.html">Register a business</a>
+          </p>
+          <p>
+            &copy; WeConnect 2018
+          </p>
+          <span></span>
+        </footer>
+      </section>
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+    </body>
+  </html>
