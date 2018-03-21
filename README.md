@@ -33,31 +33,7 @@ All Mockup Design Courtesy  of UI/UX expert [Gbolahan Fawale](https://twitter.co
 
 ## Framework Used
 
-This template is powered by [Material UI](http://www.material-ui.com) a material design framework based on [Google's material design spec](https://material.io/guidelines/material-design/introduction.html) and [ReactJS](https://reactjs.org/)
-
-You should be familiar with both three technologies if you desire to edit the template.
-
-
-## What can you do here?
-
-1. [View the live implementation](https://holuborhee.github.io/WEConnect/)
-2. Clone repo and make use of the built file
-3. Clone repo and make changes to source file
-
-
-### Clone Repo and Use Built File
-
-1.  Clone Repo - ```$ git clone https://github.com/holuborhee/WEConnect.git  ```
-
-2. Navigate into the directory - ```$ cd WEConnect```
-
-3.  Switch to **gh-pages branch** - ```$ git checkout develop```
-
-4. Host the files and folder unto any server of choice
-
-![file structure](https://github.com/holuborhee/WEConnect/blob/master/built.png)
-
-**Snapshot of files to copy**
+This template is powered by [Materialize CSS](http://www.materializecss.com) a material design framework based on [Google's material design spec](https://material.io/guidelines/material-design/introduction.html)
 
 
 ### Clone repo and make changes to source File
