@@ -1,97 +1,67 @@
-# WEConnect 
-
-[![Build Status](https://travis-ci.org/holuborhee/WEConnect.svg?branch=ft-challenge2-server)](https://travis-ci.org/holuborhee/WEConnect)
-[![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/holuborhee/WEConnect)
+# WEConnect (template)
 
 [Live Preview](https://holuborhee.github.io/WEConnect/)
 
-WEConnect provides a platform that brings businesses and individuals together.
+#### NOTE: Information here is just for the UI Design. To find out about the main project and how to contribute, [click here](https://github.com/holuborhee/WEConnect)
+
+## MOCK UPS 
+
+All Mockup Design Courtesy  of UI/UX expert [Gbolahan Fawale](https://twitter.com/GbMillz)
+
+### Landing Page
+
+![landing page](https://github.com/holuborhee/WEConnect/blob/master/mockups/landing.jpg)
+
+**Plain Landing Page**
+
+![landing page unauthenticated](https://github.com/holuborhee/WEConnect/blob/master/mockups/landing2.jpg)
+
+**Unauthenticated User**
+
+![landing page authenticated](https://github.com/holuborhee/WEConnect/blob/master/mockups/landing_auth.jpg)
+
+**Authenticated User**
 
 
-### What can users do?
+### Search Page
 
-1. Create an account
-2. Register a business
-3. Update their business details
-4. Delete their business
-5. View available business and provide reviews
-6. Search for businesses with name
-7. Filter 'Search Result' by location or category.
+![search page](https://github.com/holuborhee/WEConnect/blob/master/mockups/search.png)
 
-### GET STARTED
+### Business Page
 
-#### Clone the repo
+![business page](https://github.com/holuborhee/WEConnect/blob/master/mockups/business.png)
 
-```$ git clone https://github.com/holuborhee/WEConnect.git  ```
+## Framework Used
 
-#### Navigate into the directory
+This template is powered by [Material UI](http://www.material-ui.com) a material design framework based on [Google's material design spec](https://material.io/guidelines/material-design/introduction.html) and [ReactJS](https://reactjs.org/)
 
-```$ cd WEConnect```
-
-#### Switch to development branch
-
-```$ git checkout develop```
-
-You can start doing amazing things in any of the development folders :heart_eyes:
+You should be familiar with both three technologies if you desire to edit the template.
 
 
-###  DEVELOPMENT FLOW
+## What can you do here?
 
-The development flow is divided into 3 with separate folders for each.
-
-1. [Template - Design of all User Interface Pages](#template)
-2. [Server - Server Side Implementation of API with **NODEJS**](#server)
-3. [Client - Implementing the client side to communicate with API using **REACTJS**](#client)
-
-#### TEMPLATE
-
-- [The live preview is available here](https://holuborhee.github.io/WEConnect/)
-
-- [Also check out gh-pages branch for a more comprehensive README](https://github.com/holuborhee/WEConnect/tree/gh-pages)
-
-##### WHAT SHOULD I KNOW?
-1. [ReactJs](https://reactjs.org)
-2. [Material UI FRAMEWORK](https://www.material-ui.com)
-
-##### INITIAL SETUP
-
-**STEP 1.** Confirm you are in the **WEConnect** directory
-
-```$ pwd```
-
-Your result should be something like this ```/Users/olubori/andela/WEConnect```. **Don't worry if it's not exactly the same, just be sure it ends with *WEConnect*, and if it doesn't you should navigate to the folder**.
-
-**STEP 2.** Switch to develop branch
-
-```$ git checkout develop```
-
-**STEP 3.** Navigate to *template* folder
-
-```$ cd template```
-
-**STEP 4.** Run npm install to install dependencies
-
-```$ npm install```
-
-**STEP 5.** Run the app
-
-```$ npm run start```
+1. [View the live implementation](https://holuborhee.github.io/WEConnect/)
+2. Clone repo and make use of the built file
+3. Clone repo and make changes to source file
 
 
-```$ npm run build``` is also available for build.
+### Clone Repo and Use Built File
+
+1.  Clone Repo - ```$ git clone https://github.com/holuborhee/WEConnect.git  ```
+
+2. Navigate into the directory - ```$ cd WEConnect```
+
+3.  Switch to **gh-pages branch** - ```$ git checkout develop```
+
+4. Host the files and folder unto any server of choice
+
+![file structure](https://github.com/holuborhee/WEConnect/blob/master/built.png)
+
+**Snapshot of files to copy**
 
 
-**NOTE: Head to the [gh-pages](https://github.com/holuborhee/WEConnect/tree/gh-pages) branch to know more about Template folder**
+### Clone repo and make changes to source File
 
-
-#### SERVER
-
-*No info yet*
-
-#### CLIENT
-
-*No info yet*
-
-
+[A full guide on setting up the development environment is available in the main README](https://github.com/holuborhee/WEConnect)
 
 
