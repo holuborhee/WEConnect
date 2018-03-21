@@ -19,13 +19,11 @@ header > div {
 }
 
 #home-search {
-    height: 40%;
     margin-left: 0px;
     margin-right: 0px;
 }
 
 #home-cat-listing {
-    height: 60%;
     margin-right: 0px;
     margin-left: 0px;
 }
