@@ -171,14 +171,22 @@
           });
         var map;
       function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
+
+        let latLng= {lat: 6.5005009, lng: 3.3666}
+        let map = new google.maps.Map(document.getElementById('map'), {
+          center: latLng,
+          zoom: 15
+        });
+
+        let marker = new google.maps.Marker({
+          position: latLng,
+          map: map,
+          title: 'Mary Kay!'
         });
       }
 
       </script>
-      <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0W2GMiWvp-Jm7ZbpthWIoyamHpJFarts&callback=initMap"
     async defer></script>
     </body>
   </html>
