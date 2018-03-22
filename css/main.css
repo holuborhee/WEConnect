@@ -30,11 +30,11 @@ header > div {
 
 .business-card {
 	padding: 0px !important;
-	height: 150px !important;
+	height: 180px !important;
 }
 
 .business-card > .card-image > img {
-	height: 80px;
+	height: 100px;
 }
 
 
@@ -108,6 +108,10 @@ a:hover {
 	color: white;
 }
 
+.txt-red {
+  color: #ff8282;
+}
+
 .px-0 {
  padding-right: 0px !important;
  padding-left: 0px !important;
@@ -119,6 +123,11 @@ a:hover {
 
 .mxy-auto {
 	margin: auto;
+}
+
+.mx-auto {
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .main {
@@ -174,6 +183,10 @@ a:hover {
 	align-items: center;
 }
 
+.align-items-end {
+  align-items: flex-end;
+}
+
 .align-self-end {
   align-self: flex-end;
 }
@@ -181,6 +194,45 @@ a:hover {
 .w-100 {
 	width: 100%;
 }
+
+.bottom-divider {
+  border-bottom: 2px solid #f2f2f2;
+}
+
+.top-divider {
+  border-top: 2px solid #f2f2f2;
+}
+
+.left-divider {
+  border-left: 2px solid #f2f2f2;
+}
+
+.right-divider {
+  border-right: 2px solid #f2f2f2;
+}
+
+.box {
+  border: 2px solid #f2f2f2;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.box textarea {
+  margin-bottom: 0px;
+}
+
+.box input[type="text"] {
+  margin-bottom: 0px;
+}
+
+#add-photo {
+  height: 160px;
+  position: absolute;
+  top: -80px;
+}
+
+
+
 
 
 
@@ -331,6 +383,18 @@ a:hover {
   }
   .l13 {
    width: 100%;
+  }
+
+  #cover-photo {
+    height: 350px;
+  }
+
+  #business-left {
+    padding-right: 20px;
+  }
+
+  .img-preview {
+    height: 100px;
   }
 }
 
