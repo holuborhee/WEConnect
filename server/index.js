@@ -17,14 +17,14 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({ type: 'application/json' }));
 
 
-app.route('/')
-  .get((req, res) => {
-    res.redirect('/docs');
-  });
-
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use('/api/v1', routes);
+
+app.use((req, res, next) => {
+  res.redirect('/docs');
+  next();
+});
 
 
 app.listen(port);

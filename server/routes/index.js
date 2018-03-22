@@ -5,10 +5,6 @@ import { BusinessController, AuthController } from '../controllers';
 const app = express();
 // const router = express.Router();
 
-app.route('/')
-  .get((req, res) => {
-    res.redirect('/docs');
-  });
 
 app.route('/businesses')
   .post(BusinessController.create)
