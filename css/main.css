@@ -23,7 +23,8 @@ header > div {
 }
 
 .search-box input {
-  padding-left: 2rem !important;
+  padding-left: 2% !important;
+  width: 98% !important;
 }
 #home-search {
     margin-left: 0px;
