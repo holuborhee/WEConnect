@@ -1,8 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import logger from 'morgan';
-import swaggerUi from 'swagger-ui-express';
-import swaggerDocument from '../swagger.json';
 import routes from './routes/index';
 
 const app = express();
@@ -17,12 +15,11 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({ type: 'application/json' }));
 
 
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
 app.use('/api/v1', routes);
 
+app.use(express.static('docs'));
 app.use((req, res, next) => {
-  res.redirect('/docs');
+  res.render('index.html');
   next();
 });
 
