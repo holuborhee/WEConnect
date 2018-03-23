@@ -1,5 +1,4 @@
 html, body {
-  height: 100%;
   min-height: 420px;
   min-width: 300px;
   margin: 0;
@@ -413,6 +412,10 @@ a:hover {
   #business-left {
     padding-right: 20px;
   }
+  html, body {
+    height: 100%;
+  }
+  
 
 }
 
