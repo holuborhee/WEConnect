@@ -15,12 +15,11 @@
   "homepage": "https://github.com/holuborhee/WEConnect#readme",
   "dependencies": {
     "body-parser": "^1.15.1",
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
     "config": "^1.20.1",
     "express": "^4.13.4",
-    "morgan": "^1.7.0",
-    "swagger-ui-express": "^2.0.15",
-    "chai": "^3.5.0",
-    "chai-http": "^2.0.1"
+    "morgan": "^1.7.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -37,7 +36,6 @@
     "nyc": "^11.6.0"
   },
   "scripts": {
-    "pretest": "eslint --ignore-path .gitignore .",
     "dev": "npm run pretest && babel-node server/index.js",
     "start": "nodemon server/index.js --exec babel-node",
     "dev-start": "nodemon server/index.js --exec \"npm run test && babel-node\"",
