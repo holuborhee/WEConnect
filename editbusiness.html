@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <link rel="stylesheet" type="text/css" href="css/main.css">
+      <style type="text/css">
+        #app{
+          min-height: 100%;
+        }
+
+        main {
+          margin-bottom: 15rem;
+        }
+
+        #map {
+          height: 170px;
+        }
+      </style>
+    </head>
+
+    <body>
+      <section id="app" class="flex column-flex">
+        <header class="bg-primary z-depth-3">
+          <div class="flex wrap justify-space-between">
+            <span class="s12 l3 m3">
+              <a class="logo" href="/WEConnect"><h5><span class="txt-blue">We</span><span class="txt-green">Connect</span></h5></a>
+            </span>
+            <div class="search-box l8 m9 s12 wrap flex z-depth-3 bg-white">
+                  <div class="input-field m6">
+                    <input placeholder="Search for a business or service" id="business" type="text" class="validate">
+                  </div>
+                  <div class="input-field left-divider l6 m5">
+                    <i class="material-icons prefix txt-secondary">location_on</i>
+                    <input placeholder="Choose a location" id="location" type="text" class="validate">
+                  </div>
+                  <a href="search.html" id="btn-search" class="l1 m2 s13 bg-blue flex center-align">
+                    <i class="small material-icons mxy-auto txt-white ">search</i>
+                 </a>
+            </div>
+            <div class="bg-primary nav m1">
+              <a href="login.html" class="txt-secondary">Login</a>
+              <a href="register.html" class="txt-secondary">Signup</a>
+            </div>
+         </div>
+        </header>
+        <main class="main flex section">
+          <div class="mxy-auto align-self-center section l8 m10 s12">
+            <h4>Edit Business</h4>
+            <div class="input-field s13">
+              <input placeholder="Enter your business name here" value="Mary Kay Fashion" id="name" type="text" class="validate">
+            </div>
+
+            <div class="input-field s13">
+              <input placeholder="Enter your address here" value="15. Admirality way, Lekki" id="name" type="text" class="validate">
+            </div>
+            <div class="input-field s13">
+              <textarea id="textarea1" class="materialize-textarea"> We make you look better than everyone</textarea>
+              <label for="textarea1">What's this business About</label>
+            </div>
+            <div class="input-field s13">
+              <select>
+                <option value="1" selected>Fashion</option>
+                <option value="2">Hotel and restaurant</option>
+                <option value="3">Info Tech</option>
+              </select>
+            </div>
+            <div class="s13 flex justify-space-evenly wrap">
+              <button class="l4 s6 m5 btn red">Delete this Business</button>
+              <button class="l4 s6 m5 btn bg-blue">Update Business</button>
+            </div>
+
+
+          </div>
+          
+        </main>
+        <footer class="bg-primary flex justify-space-evenly">
+          <p class="small">
+            <a class="txt-secondary" href="newbusiness.html">Register a business</a>
+          </p>
+          <p>
+            &copy; WeConnect 2018
+          </p>
+          <span></span>
+        </footer>
+      </section>
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0W2GMiWvp-Jm7ZbpthWIoyamHpJFarts&callback=initMap"
+    async defer></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+            $('select').material_select();
+          });
+    </script>
+    </body>
+  </html>
