@@ -17,10 +17,9 @@ app.use(bodyParser.json({ type: 'application/json' }));
 
 app.use('/api/v1', routes);
 
-app.use(express.static('docs'));
-app.use((req, res, next) => {
-  res.render('index.html');
-  next();
+app.use('/docs', express.static('docs'));
+app.use('/', (req, res) => {
+  res.redirect('/docs');
 });
 
 
