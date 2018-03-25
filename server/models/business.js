@@ -1,6 +1,6 @@
 import db from '../db';
-import Helper from '../helpers';
-import Review from './review';
+import Helper from '../Helper';
+import Review from './Review';
 
 const { businesses } = db;
 

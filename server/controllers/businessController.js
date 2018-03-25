@@ -1,5 +1,5 @@
-import Business from '../models/business';
-import Helper from '../helpers';
+import Business from '../models/Business';
+import Helper from '../Helper';
 
 
 const response = { status: 'success' };
@@ -22,9 +22,8 @@ class BusinessController {
     if (q) { businesses = Business.nameHas(q); }
     if (location) { businesses = Business.at(location, businesses); }
     if (category) { businesses = Business.under(category, businesses); }
-    status = 200;
     response.data = { businesses };
-    return res.status(status).send(response);
+    return res.status(200).send(response);
   }
 
 

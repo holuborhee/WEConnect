@@ -1,5 +1,5 @@
 import db from '../db';
-import Helper from '../helpers';
+import Helper from '../Helper';
 
 const { users } = db;
 class User {

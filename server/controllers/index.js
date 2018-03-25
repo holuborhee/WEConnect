@@ -1,2 +1,2 @@
-export { default as BusinessController } from './businessController';
-export { default as AuthController } from './authController';
+export { default as BusinessController } from './BusinessController';
+export { default as AuthController } from './AuthController';

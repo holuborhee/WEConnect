@@ -3,20 +3,21 @@ import db from '../db';
 const { reviews } = db;
 
 class Review {
-  constructor(business) {
-    this.business = business;
+  constructor(businessId) {
+    this.businessId = businessId;
   }
 
   all() {
-    return reviews.filter(rev => rev.business === this.business);
+    return reviews.filter(rev => rev.business === this.businessId);
   }
 
 
   add(props) {
-    const r = props;
-    r.id = reviews.length + 1;
-    r.business = this.business;
-    return reviews.push(r) && r;
+    props.id = reviews.length + 1;
+    props.business = this.businessId;
+    if (reviews.push(props)) {
+      return props;
+    }
   }
 }
 

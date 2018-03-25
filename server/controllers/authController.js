@@ -1,5 +1,5 @@
-import User from '../models/user';
-import Helper from '../helpers';
+import User from '../models/User';
+import Helper from '../Helper';
 
 
 const response = { status: 'success' };
@@ -17,7 +17,8 @@ class AuthController {
      * @returns {object} res.
      */
   static register(req, res) {
-    const isValid = AuthController.validateRegister(req.body);
+    const isValid = this.validateRegister(req.body);
+
     if (isValid) {
       const {
         name, email, phone, password,
@@ -31,7 +32,9 @@ class AuthController {
 
       response.data = { user };
       return res.status(201).send(response);
-    } return res.status(422).send(response);
+    }
+
+    return res.status(422).send(response);
   }
 
   /**
@@ -50,8 +53,7 @@ class AuthController {
       return res.status(422).send(response);
     } else if (email && phone) {
       user = User.getByEmailAndPassword(email, password);
-      /* eslint no-unused-expressions: "off" */
-      user.id || (user = User.getByPhoneAndPassword(phone, password));
+      user = user.id ? user : User.getByPhoneAndPassword(phone, password);
     } else if (email) {
       user = User.getByEmailAndPassword(email, password);
     } else if (phone) {
