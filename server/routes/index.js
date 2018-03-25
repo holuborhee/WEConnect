@@ -21,7 +21,7 @@ app.route('/businesses/:id/reviews')
   .post(BusinessController.newReview);
 
 
-app.post('/auth/signup', AuthController.register);
+app.post('/auth/signup', (req, res) => AuthController.register(req, res));
 
 app.post('/auth/login', AuthController.login);
 

@@ -1,5 +1,5 @@
 import chai from 'chai';
-import Business from '../models/business';
+import Business from '../models/Business';
 
 
 const { expect } = chai;
