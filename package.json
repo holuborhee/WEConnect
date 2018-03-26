@@ -14,6 +14,7 @@
   },
   "homepage": "https://github.com/holuborhee/WEConnect#readme",
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.15.1",
     "chai": "^3.5.0",
     "chai-http": "^2.0.1",
