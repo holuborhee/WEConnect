@@ -15,6 +15,5 @@ cache:
 before_script:
   - createuser olubori -s -U postgres
   - createdb we_connect_test --username=olubori
-  - sequelize db:migrate
 after_success :
     - npm run coverage
