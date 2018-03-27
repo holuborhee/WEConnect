@@ -43,6 +43,9 @@
     "sequelize-cli": "^4.0.0"
   },
   "scripts": {
+    "migrate-undo": "sequelize db:migrate:undo:all",
+    "seed": "sequelize db:seed:all",
+    "migrate": "npm run migrate-undo && sequelize db:migrate && npm run seed",
     "dev": "npm run pretest && babel-node server/index.js",
     "start": "nodemon server/index.js --exec babel-node",
     "dev-start": "nodemon server/index.js --exec \"npm run test && babel-node\"",
