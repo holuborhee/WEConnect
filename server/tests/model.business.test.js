@@ -12,7 +12,7 @@ describe('Model Business', () => {
     it('should return all businesses', (done) => {
       Business.findAll()
         .then((business) => {
-          expect(business).to.have.lengthOf(10);
+          expect(business).to.be.an('Array').and.have.lengthOf(10);
           done();
         });
     });
@@ -52,7 +52,7 @@ describe.skip('Model Business', () => {
 
 
   describe('function modify()', () => {
-    it('should return an instance of busines');
+    it('should return an instance of business');
 
     it('should still reflect in later call to it');
 

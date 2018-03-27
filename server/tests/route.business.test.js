@@ -6,7 +6,7 @@ const { expect } = chai;
 chai.use(chaiHttp);
 const BASE_URL = '/api/v1/businesses';
 
-describe.skip('Business Routes', () => {
+describe('Business Routes', () => {
   describe('/businesses', () => {
     describe('GET', () => {
       it('should fetch all businesses when no parameter is present', (done) => {
@@ -15,12 +15,12 @@ describe.skip('Business Routes', () => {
 		  .end((err, res) => {
 		  	expect(res).to.have.status(200);
 		  	expect(res.body.status).to.equal('success');
-		  	expect(res.body.data.businesses).to.be.an('array').that.has.lengthOf(4);
+		  	expect(res.body.data.businesses).to.be.an('array').that.has.lengthOf(10);
 		  	done();
 		  });
       });
 
-      it('should filter fetch all businesses within a location', (done) => {
+      it.skip('should filter fetch all businesses within a location', (done) => {
         chai.request(app)
 		  .get(`${BASE_URL}?location=owerri`)
 		  .end((err, res) => {
@@ -31,7 +31,7 @@ describe.skip('Business Routes', () => {
 		  });
       });
 
-      it('should filter fetch with category', (done) => {
+      it.skip('should filter fetch with category', (done) => {
         chai.request(app)
 		  .get(`${BASE_URL}?category=2`)
 		  .end((err, res) => {
@@ -42,7 +42,7 @@ describe.skip('Business Routes', () => {
 		  });
       });
 
-      it('should search for business with name', (done) => {
+      it.skip('should search for business with name', (done) => {
         chai.request(app)
 		  .get(`${BASE_URL}?q=noble`)
 		  .end((err, res) => {
@@ -53,7 +53,7 @@ describe.skip('Business Routes', () => {
 		  });
       });
 
-      it('should ignore unexpected parameter and return businesses', (done) => {
+      it.skip('should ignore unexpected parameter and return businesses', (done) => {
         chai.request(app)
 		  .get(`${BASE_URL}?qi=oluaka&locate=owerri&category=4`)
 		  .end((err, res) => {
@@ -64,7 +64,7 @@ describe.skip('Business Routes', () => {
 		  });
       });
 
-      it('should search by name and filter by location and category', (done) => {
+      it.skip('should search by name and filter by location and category', (done) => {
         chai.request(app)
 		  .get(`${BASE_URL}?q=a&another=nothing&location=owerri&category=4`)
 		  .end((err, res) => {
@@ -77,7 +77,7 @@ describe.skip('Business Routes', () => {
     });
 
 
-    describe('POST', () => {
+    describe.skip('POST', () => {
       it('should create a new business, return status of 201 and return data with business detail', (done) => {
     	const business = {
 	        id: 1,
@@ -119,7 +119,7 @@ describe.skip('Business Routes', () => {
     });
   });
 
-  describe('/businesses/:id', () => {
+  describe.skip('/businesses/:id', () => {
   	describe('GET', () => {
   	  it('should return 404 for id not found', (done) => {
   	  	chai.request(app)
@@ -143,7 +143,7 @@ describe.skip('Business Routes', () => {
   	  });
   	});
 
-  	describe('PUT', () => {
+  	describe.skip('PUT', () => {
   		it('should return fail and 404 if id not found on server', (done) => {
   		  chai.request(app)
   	  	  .put(`${BASE_URL}/9`)
@@ -183,7 +183,7 @@ describe.skip('Business Routes', () => {
   	});
 
 
-  	describe('DELETE', () => {
+  	describe.skip('DELETE', () => {
   		it('should return fail and 404 if id not found on server', (done) => {
   		  chai.request(app)
   	  	  .delete(`${BASE_URL}/9`)
@@ -206,7 +206,7 @@ describe.skip('Business Routes', () => {
   		});
   	});
   });
-  describe('/businesses/:id/reviews', () => {
+  describe.skip('/businesses/:id/reviews', () => {
   	describe('GET', () => {
   	  it('should return all review for the business', (done) => {
         chai.request(app)
@@ -240,7 +240,7 @@ describe.skip('Business Routes', () => {
   	  });
   	});
 
-  	describe('POST', () => {
+  	describe.skip('POST', () => {
   	  it('should return 201 and returned the review created', (done) => {
         chai.request(app)
 		  .post(`${BASE_URL}/3/reviews`)
