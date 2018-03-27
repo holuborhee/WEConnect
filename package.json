@@ -22,7 +22,6 @@
     "express": "^4.13.4",
     "faker": "^4.1.0",
     "morgan": "^1.7.0",
-    "node-random-name": "^1.0.1",
     "pg": "^7.4.1",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.37.4"
@@ -48,7 +47,7 @@
     "migrate": "npm run migrate-undo && sequelize db:migrate --env test && npm run seed",
     "dev": "npm run pretest && babel-node server/index.js",
     "start": "nodemon server/index.js --exec babel-node",
-    "dev-start": "nodemon server/index.js --exec \"npm run test && babel-node\"",
+    "dev-start": "nodemon server/index.js --exec \"npm run migrate && npm run test && babel-node\"",
     "build": "babel server -d dist",
     "serve": "node dist/index.js",
     "test": "nyc --reporter=html --reporter=text mocha server/tests/ --compilers js:babel-register",
