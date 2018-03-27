@@ -12,7 +12,7 @@ describe('Model Business', () => {
     it('should return all businesses', (done) => {
       Business.findAll()
         .then((business) => {
-          expect(business).to.have.lengthOf(10);
+          expect(business).to.be.an('Array').and.have.lengthOf(10);
           done();
         });
     });
