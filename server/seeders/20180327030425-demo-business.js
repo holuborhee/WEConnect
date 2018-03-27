@@ -1,12 +1,14 @@
-import faker from 'faker';
+const faker = require('faker');
 
-const businesses = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(index => ({
-  name: faker.company.companyName,
-  latitude: faker.address.latitude,
-  longitude: faker.address.longitude,
-  address: `${faker.address.streetAddress}`,
-  userId: index,
-  categoryId: index > 6 ? index - (index - 6 + 1) : index,
+const length = Array(10).fill().map((x, i) => i + 1);
+
+const businesses = length.map(val => ({
+  name: faker.company.companyName(),
+  latitude: faker.address.latitude(),
+  longitude: faker.address.longitude(),
+  address: `${faker.address.streetAddress()} ${faker.address.city()} ${faker.address.state()}`,
+  userId: val,
+  categoryId: val > 6 ? val - ((val - 6) + 1) : val,
   createdAt: new Date().toISOString(),
   updatedAt: new Date().toISOString(),
 }));
@@ -16,3 +18,13 @@ module.exports = {
   down: (queryInterface, Sequelize) => queryInterface.bulkDelete('Businesses'),
 
 };
+
+
+/* name: faker.company.companyName,
+  latitude: faker.address.latitude,
+  longitude: faker.address.longitude,
+  address: `${faker.address.streetAddress}`,
+  userId: val,
+  categoryId: val > 6 ? val - (val - 6 + 1) : val,
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString(), */

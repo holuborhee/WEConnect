@@ -1,8 +1,7 @@
-import bcrypt from 'bcrypt';
-import faker from 'faker';
+const bcrypt = require('bcrypt');
+const faker = require('faker');
 
-
-const length = new Array(10);
+const length = Array(10).fill().map((x, i) => i + 1);
 
 const users = length.map(len => ({
   name: faker.name.findName(),
