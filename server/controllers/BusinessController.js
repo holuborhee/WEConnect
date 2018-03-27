@@ -1,9 +1,12 @@
-import Business from '../models/Business';
+import models from '../models';
 import Helper from '../Helper';
 
 
 const response = { status: 'success' };
 let status;
+
+
+const { Business } = models;
 /**
   * Business Controller
   * @class BusinessController
@@ -18,12 +21,14 @@ class BusinessController {
    */
   static index(req, res) {
     const { q, location, category } = req.query;
-    let businesses = Business.all();
-    if (q) { businesses = Business.nameHas(q); }
+    return Business.findAll()
+      .then(businesses => res.status(200).send({ status: 'success', data: { businesses } }))
+      .catch(error => res.status(400).send({ error }));
+    /* if (q) { businesses = Business.nameHas(q); }
     if (location) { businesses = Business.at(location, businesses); }
     if (category) { businesses = Business.under(category, businesses); }
     response.data = { businesses };
-    return res.status(200).send(response);
+    return res.status(200).send(response); */
   }
 
 

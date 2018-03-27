@@ -52,7 +52,7 @@ describe.skip('Model Business', () => {
 
 
   describe('function modify()', () => {
-    it('should return an instance of busines');
+    it('should return an instance of business');
 
     it('should still reflect in later call to it');
 

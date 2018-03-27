@@ -6,16 +6,16 @@ const { expect } = chai;
 chai.use(chaiHttp);
 const BASE_URL = '/api/v1/businesses';
 
-describe.skip('Business Routes', () => {
-  describe('/businesses', () => {
-    describe('GET', () => {
-      it('should fetch all businesses when no parameter is present', (done) => {
+describe.only('Business Routes', () => {
+  describe.only('/businesses', () => {
+    describe.only('GET', () => {
+      it.only('should fetch all businesses when no parameter is present', (done) => {
         chai.request(app)
 		  .get(BASE_URL)
 		  .end((err, res) => {
 		  	expect(res).to.have.status(200);
 		  	expect(res.body.status).to.equal('success');
-		  	expect(res.body.data.businesses).to.be.an('array').that.has.lengthOf(4);
+		  	expect(res.body.data.businesses).to.be.an('array').that.has.lengthOf(10);
 		  	done();
 		  });
       });
@@ -77,7 +77,7 @@ describe.skip('Business Routes', () => {
     });
 
 
-    describe('POST', () => {
+    describe.skip('POST', () => {
       it('should create a new business, return status of 201 and return data with business detail', (done) => {
     	const business = {
 	        id: 1,
@@ -119,7 +119,7 @@ describe.skip('Business Routes', () => {
     });
   });
 
-  describe('/businesses/:id', () => {
+  describe.skip('/businesses/:id', () => {
   	describe('GET', () => {
   	  it('should return 404 for id not found', (done) => {
   	  	chai.request(app)
@@ -143,7 +143,7 @@ describe.skip('Business Routes', () => {
   	  });
   	});
 
-  	describe('PUT', () => {
+  	describe.skip('PUT', () => {
   		it('should return fail and 404 if id not found on server', (done) => {
   		  chai.request(app)
   	  	  .put(`${BASE_URL}/9`)
@@ -183,7 +183,7 @@ describe.skip('Business Routes', () => {
   	});
 
 
-  	describe('DELETE', () => {
+  	describe.skip('DELETE', () => {
   		it('should return fail and 404 if id not found on server', (done) => {
   		  chai.request(app)
   	  	  .delete(`${BASE_URL}/9`)
@@ -206,7 +206,7 @@ describe.skip('Business Routes', () => {
   		});
   	});
   });
-  describe('/businesses/:id/reviews', () => {
+  describe.skip('/businesses/:id/reviews', () => {
   	describe('GET', () => {
   	  it('should return all review for the business', (done) => {
         chai.request(app)
@@ -240,7 +240,7 @@ describe.skip('Business Routes', () => {
   	  });
   	});
 
-  	describe('POST', () => {
+  	describe.skip('POST', () => {
   	  it('should return 201 and returned the review created', (done) => {
         chai.request(app)
 		  .post(`${BASE_URL}/3/reviews`)
