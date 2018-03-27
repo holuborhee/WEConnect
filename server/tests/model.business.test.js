@@ -1,120 +1,62 @@
 import chai from 'chai';
-import Business from '../models/Business';
+import models from '../models';
 
 
 const { expect } = chai;
 
+const { Business } = models;
+
 
 describe('Model Business', () => {
-  describe('function all()', () => {
+  describe('READ', () => {
     it('should return all businesses', (done) => {
-      expect(Business.all()).to.be.an('array').that.has.lengthOf(4);
-      done();
-    });
-
-    it('should return all businesses with name under category at location', (done) => {
-      let businesses = Business.nameHas('la');
-      businesses = Business.under(4, businesses);
-      const owerri = Business.at('owerri', businesses);
-      const lagos = Business.at('lagos', businesses);
-
-      expect(owerri).to.be.an('array').that.has.lengthOf(0);
-      expect(lagos).to.be.an('array').that.has.lengthOf(1);
-      done();
+      Business.findAll()
+        .then((business) => {
+          expect(business).to.have.lengthOf(10);
+          done();
+        });
     });
   });
+});
+describe.skip('Model Business', () => {
+  describe('function all()', () => {
+    it('should return all businesses');
 
+    it('should return all businesses with name under category at location');
+  });
   describe('function at(owerri)', () => {
-    it('should return all businesses in owerri', (done) => {
-      expect(Business.at('owerri')).to.be.an('array').that.has.lengthOf(3);
-      done();
-    });
+    it('should return all businesses in owerri');
   });
 
   describe('function under()', () => {
-    it('should return all businesses under a category', (done) => {
-      expect(Business.under(2)).to.be.an('array').that.has.lengthOf(1);
-      done();
-    });
+    it('should return all businesses under a category');
   });
 
   describe('function nameHas(param)', () => {
-    it('should return all businesses with param in name', (done) => {
-      expect(Business.nameHas('la')).to.be.an('array').that.has.lengthOf(2);
-      done();
-    });
+    it('should return all businesses with param in name');
   });
 
 
   describe('Constructor', () => {
-    it('constructor should create an instance of business class', (done) => {
-      const b = new Business({
-        id: 1, name: 'Noble Computers', user: 1, category: 4, latitude: 3.142, longitude: 4.5678, address: '31, Mbaise Road, Owerri',
-      });
+    it('constructor should create an instance of business class');
 
-      expect(b).to.be.an.instanceOf(Business);
-      done();
-    });
-
-    it('constructor should throw an error if props value are not complete or undefined', (done) => {
-      const badfn = () => {
-        const b = new Business({
-          name: 'Noble Computers', user: 1, category: 4, latitude: 3.142, longitude: 4.5678, address: '31, Mbaise Road, Owerri',
-        });
-
-        return b;
-      };
-
-
-      expect(badfn).to.throw();
-      done();
-    });
+    it('constructor should throw an error if props value are not complete or undefined');
   });
 
 
   describe('function find()', () => {
-    it('find(i) should return a business if value is found for i', (done) => {
-      expect(Business.find(2)).to.be.an.instanceOf(Business);
-      done();
-    });
+    it('find(i) should return a business if value is found for i');
 
-    it('find(i) should return null if no value is found for i', (done) => {
-      expect(Business.find(6)).to.be.null; /* eslint no-unused-expressions: "off" */
-      done();
-    });
+    it('find(i) should return null if no value is found for i');
   });
 
 
   describe('function modify()', () => {
-    let b = Business.find(1);
-    it('should return an instance of business', (done) => {
-      b = b.modify({
-        name: 'New Name',
-      });
+    it('should return an instance of business');
 
-      expect(b).to.be.an.instanceOf(Business);
-      expect(b.id).to.equal(1);
-      expect(b.name).to.equal('New Name');
-      expect(b.address).to.equal('31, Mbaise Road, Owerri');
-      done();
-    });
+    it('should still reflect in later call to it');
 
-    it('should still reflect in later call to it', (done) => {
-      expect(Business.find(1).name).to.equal('New Name');
-      done();
-    });
-
-    it('should still return an instance of business', (done) => {
-      b = b.modify({
-        nam: 'Noble Computers',
-      });
-
-      expect(b).to.be.an.instanceOf(Business);
-      expect(b.id).to.equal(1);
-      expect(b.name).to.equal('New Name');
-      expect(b.address).to.equal('31, Mbaise Road, Owerri');
-      done();
-    });
+    it('should still return an instance of business');
 
     it('should not change businesses array length', (done) => {
       expect(Business.all()).to.have.lengthOf(4);
