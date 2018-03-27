@@ -5,7 +5,7 @@ import User from '../models/User';
 const { expect } = chai;
 
 
-describe('Model User', () => {
+describe.skip('Model User', () => {
   describe('function find()', () => {
     it('should return an object when id matches an existing id', (done) => {
       expect(User.find(1)).to.be.an('object');

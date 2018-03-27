@@ -1,24 +1,24 @@
-import db from '../db';
 
-const { reviews } = db;
-
-class Review {
-  constructor(businessId) {
-    this.businessId = businessId;
-  }
-
-  all() {
-    return reviews.filter(rev => rev.business === this.businessId);
-  }
-
-
-  add(props) {
-    props.id = reviews.length + 1;
-    props.business = this.businessId;
-    if (reviews.push(props)) {
-      return props;
-    }
-  }
-}
-
-export default Review;
+module.exports = (sequelize, DataTypes) => {
+  const Review = sequelize.define('Review', {
+    rating: {
+    	type: DataTypes.DECIMAL,
+    	allowNull: false,
+    },
+    comment: {
+    	type: DataTypes.TEXT,
+    	allowNull: false,
+    },
+    reviewer: {
+    	type: DataTypes.STRING,
+    	allowNull: false,
+    },
+  }, {});
+  Review.associate = (models) => {
+    Review.belongsTo(models.Business, {
+    	foreignKey: 'businessId',
+    	onDelete: 'CASCADE',
+    });
+  };
+  return Review;
+};

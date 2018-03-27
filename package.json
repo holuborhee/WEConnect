@@ -14,11 +14,13 @@
   },
   "homepage": "https://github.com/holuborhee/WEConnect#readme",
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.15.1",
     "chai": "^3.5.0",
     "chai-http": "^2.0.1",
     "config": "^1.20.1",
     "express": "^4.13.4",
+    "faker": "^4.1.0",
     "morgan": "^1.7.0",
     "pg": "^7.4.1",
     "pg-hstore": "^2.3.2",
@@ -40,9 +42,12 @@
     "sequelize-cli": "^4.0.0"
   },
   "scripts": {
+    "migrate-undo": "sequelize db:migrate:undo:all --env test",
+    "seed": "sequelize db:seed:all --env test",
+    "migrate": "npm run migrate-undo && sequelize db:migrate --env test && npm run seed",
     "dev": "npm run pretest && babel-node server/index.js",
     "start": "nodemon server/index.js --exec babel-node",
-    "dev-start": "nodemon server/index.js --exec \"npm run test && babel-node\"",
+    "dev-start": "nodemon server/index.js --exec \"npm run migrate && npm run test && babel-node\"",
     "build": "babel server -d dist",
     "serve": "node dist/index.js",
     "test": "nyc --reporter=html --reporter=text mocha server/tests/ --compilers js:babel-register",
