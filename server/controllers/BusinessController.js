@@ -10,7 +10,7 @@ const response = { status: 'success' };
 let status;
 
 
-const { Business } = models;
+const { Business, Review } = models;
 /**
   * Business Controller
   * @class BusinessController
@@ -174,20 +174,13 @@ class BusinessController {
   static allReviews(req, res) {
     const { id } = req.params;
 
-    const business = Business.find(id);
-    if (business) {
-      const reviews = business.review.all();
-      response.data = { reviews };
-      response.status = 'success';
-      status = 200;
-    } else {
-      response.data = { id: `No resource could be found for ${id} on the server` };
-      response.status = 'fail';
-      status = 404;
-    }
-
-
-    return res.status(status).send(response);
+    Business.findById(id)
+      .then((business) => {
+        if (business) {
+          Review.findAll({ where: { businessId: business.id } })
+            .then(reviews => res.status(200).send({ status: 'success', data: { reviews } }));
+        } else return res.status(404).send({ status: 'fail', data: { id: `No resource could be found for ${id} on the server` } });
+      });
   }
 
   static newReview(req, res) {
