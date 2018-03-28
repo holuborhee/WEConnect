@@ -11,7 +11,7 @@ const reviews = length.map((len, index) => {
     reviewer: faker.name.findName(),
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
-    businessId: count % 10 || 10,
+    businessId: count % 10 || 1,
   };
 });
 
