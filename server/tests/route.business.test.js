@@ -20,29 +20,29 @@ describe('Business Routes', () => {
 		  });
       });
 
-      it.skip('should filter fetch all businesses within a location', (done) => {
+      it('should filter fetch all businesses within a location', (done) => {
         chai.request(app)
-		  .get(`${BASE_URL}?location=owerri`)
+		  .get(`${BASE_URL}?location=lagos`)
 		  .end((err, res) => {
 		  	expect(res).to.have.status(200);
 		  	expect(res.body.status).to.equal('success');
-		  	expect(res.body.data.businesses).to.be.an('array').that.has.lengthOf(3);
+		  	expect(res.body.data.businesses).to.be.an('array').that.has.lengthOf(2);
 		  	done();
 		  });
       });
 
-      it.skip('should filter fetch with category', (done) => {
+      it('should filter fetch with category', (done) => {
         chai.request(app)
-		  .get(`${BASE_URL}?category=2`)
+		  .get(`${BASE_URL}?category=3`)
 		  .end((err, res) => {
 		  	expect(res).to.have.status(200);
 		  	expect(res.body.status).to.equal('success');
-		  	expect(res.body.data.businesses).to.be.an('array').that.has.lengthOf(1);
+		  	expect(res.body.data.businesses).to.be.an('array').that.has.lengthOf(5);
 		  	done();
 		  });
       });
 
-      it('should search for business with name', (done) => {
+      it.skip('should search for business with name', (done) => {
         chai.request(app)
 		  .get(`${BASE_URL}?search=andela`)
 		  .end((err, res) => {
@@ -53,20 +53,20 @@ describe('Business Routes', () => {
 		  });
       });
 
-      it.skip('should ignore unexpected parameter and return businesses', (done) => {
+      it('should ignore unexpected parameter and return businesses', (done) => {
         chai.request(app)
 		  .get(`${BASE_URL}?qi=oluaka&locate=owerri&category=4`)
 		  .end((err, res) => {
 		  	expect(res).to.have.status(200);
 		  	expect(res.body.status).to.equal('success');
-		  	expect(res.body.data.businesses).to.be.an('array').that.has.lengthOf(3);
+		  	expect(res.body.data.businesses).to.be.an('array').that.has.lengthOf(1);
 		  	done();
 		  });
       });
 
-      it.skip('should search by name and filter by location and category', (done) => {
+      it('should search by name and filter by location and category', (done) => {
         chai.request(app)
-		  .get(`${BASE_URL}?q=a&another=nothing&location=owerri&category=4`)
+		  .get(`${BASE_URL}?search=andela&another=nothing&location=lagos&category=3`)
 		  .end((err, res) => {
 		  	expect(res).to.have.status(200);
 		  	expect(res.body.status).to.equal('success');
