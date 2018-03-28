@@ -77,13 +77,13 @@ describe('Business Routes', () => {
     });
 
 
-    describe.skip('POST', () => {
+    describe('POST', () => {
       it('should create a new business, return status of 201 and return data with business detail', (done) => {
     	const business = {
 	        id: 1,
 	        name: 'Walmart',
-	        user: 1,
-	        category: 4,
+	        userId: 1,
+	        categoryId: 4,
 	        latitude: 3.142,
 	        longitude: 4.5678,
 	        address: 'Agidingbi, Ikeja, Lagos.',
@@ -94,11 +94,11 @@ describe('Business Routes', () => {
 		  .end((err, res) => {
             expect(res).to.have.status(201);
             expect(res.body.status).to.equal('success');
-            expect(res.body.data.business.id).to.equal(5);
+            expect(res.body.data.business.id).to.equal(11);
             done();
           });
       });
-      it('should return 422 for when required values are missing', (done) => {
+      it.skip('should return 422 for when required values are missing', (done) => {
       	const business = {
 	        id: 1,
 	        name: 'Walmart',
@@ -143,10 +143,10 @@ describe('Business Routes', () => {
   	  });
   	});
 
-  	describe.skip('PUT', () => {
+  	describe('PUT', () => {
   		it('should return fail and 404 if id not found on server', (done) => {
   		  chai.request(app)
-  	  	  .put(`${BASE_URL}/9`)
+  	  	  .put(`${BASE_URL}/100`)
   	  	  .send({ name: 'Another name' })
   	  	  .end((err, res) => {
   	  	  	expect(res).to.have.status(404);
