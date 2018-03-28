@@ -1,6 +1,9 @@
-import User from '../models/User';
+import bcrypt from 'bcrypt';
+import models from '../models';
 import Helper from '../Helper';
 
+
+const { User } = models;
 
 const response = { status: 'success' };
 /**
@@ -17,24 +20,18 @@ class AuthController {
      * @returns {object} res.
      */
   static register(req, res) {
-    const isValid = this.validateRegister(req.body);
+    const {
+      name, email, phone, password,
+    } = req.body;
 
-    if (isValid) {
-      const {
-        name, email, phone, password,
-      } = req.body;
-      const user = User.add({
-        name, email, phone, password,
-      });
-      response.status = 'success';
-
-      delete user.password;
-
-      response.data = { user };
-      return res.status(201).send(response);
-    }
-
-    return res.status(422).send(response);
+    return User.create({
+      name, phone, email, password: `${bcrypt.hashSync('password', 10)}`,
+    })
+      .then((user) => {
+        const { name, phone, email } = user;
+        return res.status(201).send({ status: 'success', data: { user: { name, phone, email } } });
+      })
+      .catch(err => res.status(500).send({ status: 'error', message: 'There was an internal server error' }));
   }
 
   /**
