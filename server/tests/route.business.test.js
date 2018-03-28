@@ -206,7 +206,7 @@ describe('Business Routes', () => {
   		});
   	});
   });
-  describe.skip('/businesses/:id/reviews', () => {
+  describe('/businesses/:id/reviews', () => {
   	describe('GET', () => {
   	  it('should return all review for the business', (done) => {
         chai.request(app)
