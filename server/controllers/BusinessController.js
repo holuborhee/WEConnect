@@ -25,20 +25,44 @@ class BusinessController {
    */
   static index(req, res) {
     const { search, location, category } = req.query;
-    if (search) {
-      return Business.findAll({
+    let condition = {};
+    if (!category ^ !location) {
+      condition = {
         where: {
-          name: {
-            [Op.like]: `${search.toLowerCase()}%`,
-          },
+          [Op.or]: [
+            {
+              categoryId: {
+                [Op.eq]: category,
+              },
+            }, {
+              address: {
+                [Op.like]: `%${location}%`,
+              },
+            },
+          ],
         },
-      })
-        .then(businesses => res.status(200).send({ status: 'success', data: { businesses } }))
-        .catch(error => res.status(400).send({ error }));
+      };
+    } else if (category && location) {
+      condition = {
+        where: {
+          [Op.and]: [
+            {
+              categoryId: {
+                [Op.eq]: category,
+              },
+            }, {
+              address: {
+                [Op.like]: `%${location}%`,
+              },
+            },
+          ],
+        },
+      };
     }
-    return Business.findAll()
+    return Business.findAll(condition)
       .then(businesses => res.status(200).send({ status: 'success', data: { businesses } }))
       .catch(error => res.status(400).send({ error }));
+
 
     /* if (location) { businesses = Business.at(location, businesses); }
     if (category) { businesses = Business.under(category, businesses); }
