@@ -214,13 +214,13 @@ describe('Business Routes', () => {
 		  .end((err, res) => {
             expect(res).to.have.status(200);
             expect(res.body.status).to.equal('success');
-            expect(res.body.data.reviews).to.be.an('array').that.has.lengthOf(1);
+            expect(res.body.data.reviews).to.be.an('array').that.has.lengthOf(5);
             done();
 		  });
   		});
   	  it('should return return fail and status 404 when business id not found', (done) => {
   	  	chai.request(app)
-  	  	  .get(`${BASE_URL}/9/reviews`)
+  	  	  .get(`${BASE_URL}/34/reviews`)
   	  	  .end((err, res) => {
   	  	  	expect(res).to.have.status(404);
   	  	  	expect(res.body.status).to.equal('fail');
@@ -230,7 +230,7 @@ describe('Business Routes', () => {
   	  });
   	  it('should return success when no review for business', (done) => {
   	  	chai.request(app)
-  	  	  .get(`${BASE_URL}/4/reviews`)
+  	  	  .get(`${BASE_URL}/10/reviews`)
   	  	  .end((err, res) => {
   	  	  	expect(res).to.have.status(200);
             expect(res.body.status).to.equal('success');
