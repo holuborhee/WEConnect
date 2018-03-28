@@ -1,6 +1,6 @@
 import models from '../models';
 import Helper from '../Helper';
-import Sequelize from 'Sequelize';
+import Sequelize from 'sequelize';
 
 
 const { Op } = Sequelize;
