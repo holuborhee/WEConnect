@@ -1,5 +1,9 @@
 import models from '../models';
 import Helper from '../Helper';
+import Sequelize from 'sequelize';
+
+
+const { Op } = Sequelize;
 
 
 const response = { status: 'success' };
@@ -20,12 +24,23 @@ class BusinessController {
    * @returns {object} res.
    */
   static index(req, res) {
-    const { q, location, category } = req.query;
+    const { search, location, category } = req.query;
+    if (search) {
+      return Business.findAll({
+        where: {
+          name: {
+            [Op.like]: `${search.toLowerCase()}%`,
+          },
+        },
+      })
+        .then(businesses => res.status(200).send({ status: 'success', data: { businesses } }))
+        .catch(error => res.status(400).send({ error }));
+    }
     return Business.findAll()
       .then(businesses => res.status(200).send({ status: 'success', data: { businesses } }))
       .catch(error => res.status(400).send({ error }));
-    /* if (q) { businesses = Business.nameHas(q); }
-    if (location) { businesses = Business.at(location, businesses); }
+
+    /* if (location) { businesses = Business.at(location, businesses); }
     if (category) { businesses = Business.under(category, businesses); }
     response.data = { businesses };
     return res.status(200).send(response); */

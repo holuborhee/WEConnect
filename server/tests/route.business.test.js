@@ -42,13 +42,13 @@ describe('Business Routes', () => {
 		  });
       });
 
-      it.skip('should search for business with name', (done) => {
+      it('should search for business with name', (done) => {
         chai.request(app)
-		  .get(`${BASE_URL}?q=noble`)
+		  .get(`${BASE_URL}?search=andela`)
 		  .end((err, res) => {
 		  	expect(res).to.have.status(200);
 		  	expect(res.body.status).to.equal('success');
-		  	expect(res.body.data.businesses).to.be.an('array').that.has.lengthOf(1);
+		  	expect(res.body.data.businesses).to.be.an('array').that.has.lengthOf(2);
 		  	done();
 		  });
       });

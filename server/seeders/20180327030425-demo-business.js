@@ -3,7 +3,7 @@ const faker = require('faker');
 const length = Array(10).fill().map((x, i) => i + 1);
 
 const businesses = length.map(val => ({
-  name: faker.company.companyName(),
+  name: val === 1 || val === 3 ? `andela ${faker.company.companyName()}` : faker.company.companyName(),
   latitude: faker.address.latitude(),
   longitude: faker.address.longitude(),
   address: `${faker.address.streetAddress()} ${faker.address.city()} ${faker.address.state()}`,

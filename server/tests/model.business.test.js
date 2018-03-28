@@ -16,6 +16,19 @@ describe('Model Business', () => {
           done();
         });
     });
+    it('should return all businesses with name under category at location');
+  });
+
+  describe('function at(owerri)', () => {
+    it('should return all businesses in owerri');
+  });
+
+  describe('function under()', () => {
+    it('should return all businesses under a category');
+  });
+
+  describe('function nameHas(param)', () => {
+    it('should return all businesses with param in name');
   });
 
   describe('findByID', () => {
@@ -37,36 +50,6 @@ describe('Model Business', () => {
   });
 });
 describe.skip('Model Business', () => {
-  describe('function all()', () => {
-    it('should return all businesses');
-
-    it('should return all businesses with name under category at location');
-  });
-  describe('function at(owerri)', () => {
-    it('should return all businesses in owerri');
-  });
-
-  describe('function under()', () => {
-    it('should return all businesses under a category');
-  });
-
-  describe('function nameHas(param)', () => {
-    it('should return all businesses with param in name');
-  });
-
-
-  describe('Constructor', () => {
-    it('constructor should create an instance of business class');
-
-    it('constructor should throw an error if props value are not complete or undefined');
-  });
-
-
-  describe('function find()', () => {
-
-  });
-
-
   describe('function modify()', () => {
     it('should return an instance of business');
 

@@ -1,4 +1,3 @@
-
 module.exports = (sequelize, DataTypes) => {
   const Business = sequelize.define('Business', {
     name: {
@@ -22,6 +21,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
   }, {});
+
+  Business.nameHas = param => Business.findAll().then(businesses => businesses);
   Business.associate = (models) => {
     Business.belongsTo(models.Category, {
       foreignKey: 'categoryId',
