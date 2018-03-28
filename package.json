@@ -47,7 +47,7 @@
     "migrate": "npm run migrate-undo && sequelize db:migrate --env test && npm run seed",
     "dev": "npm run pretest && babel-node server/index.js",
     "start": "nodemon server/index.js --exec babel-node",
-    "dev-start": "nodemon server/index.js --exec \"npm run test && babel-node\"",
+    "dev-start": "nodemon server/index.js --exec \"npm run migrate && npm run test && babel-node\"",
     "build": "babel server -d dist",
     "serve": "node dist/index.js",
     "test": "nyc --reporter=html --reporter=text mocha server/tests/ --compilers js:babel-register",
