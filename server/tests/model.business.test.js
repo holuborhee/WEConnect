@@ -16,23 +16,33 @@ describe('Model Business', () => {
           done();
         });
     });
-  });
 
-  describe('findByID', () => {
-    it('should return a business if ID is found', (done) => {
-      Business.findById(2)
-        .then((business) => {
-          expect(business).to.be.an.instanceOf(Business);
-          done();
-        });
+    describe('findByID', () => {
+      it('should return a business if ID is found', (done) => {
+        Business.findById(2)
+          .then((business) => {
+            expect(business).to.be.an.instanceOf(Business);
+            done();
+          });
+      });
+
+      it('should return null if id is not found', (done) => {
+        Business.findById(23)
+          .then((business) => {
+            expect(business).to.be.null;
+            done();
+          });
+      });
     });
 
-    it('should return null if id is not found', (done) => {
-      Business.findById(23)
-        .then((business) => {
-          expect(business).to.be.null;
-          done();
-        });
+    describe.skip('get Review', () => {
+      it('should return all reviews for a business', (done) => {
+        Business.findById(2)
+          .then((business) => {
+            expect(business.reviews).to.be.an('Object');
+            done();
+          });
+      });
     });
   });
 });
@@ -158,7 +168,6 @@ describe.skip('Model Business', () => {
       });
     });
   });
-
 
   describe('get AverageRating', () => {
     it('should calculate and return avarage rating for a business');
