@@ -4,7 +4,7 @@ import models from '../models';
 
 const { expect } = chai;
 
-const { Business } = models;
+const { Business, Review } = models;
 
 
 describe('Model Business', () => {
@@ -17,35 +17,49 @@ describe('Model Business', () => {
         });
     });
     it('should return all businesses with name under category at location');
-  });
 
-  describe('function at(owerri)', () => {
-    it('should return all businesses in owerri');
-  });
-
-  describe('function under()', () => {
-    it('should return all businesses under a category');
-  });
-
-  describe('function nameHas(param)', () => {
-    it('should return all businesses with param in name');
-  });
-
-  describe('findByID', () => {
-    it('should return a business if ID is found', (done) => {
-      Business.findById(2)
-        .then((business) => {
-          expect(business).to.be.an.instanceOf(Business);
-          done();
-        });
+    describe('function at(owerri)', () => {
+      it('should return all businesses in owerri');
     });
 
-    it('should return null if id is not found', (done) => {
-      Business.findById(23)
-        .then((business) => {
-          expect(business).to.be.null;
-          done();
-        });
+    describe('function under()', () => {
+      it('should return all businesses under a category');
+    });
+
+    describe('function nameHas(param)', () => {
+      it('should return all businesses with param in name');
+    });
+
+
+    describe('findByID', () => {
+      it('should return a business if ID is found', (done) => {
+        Business.findById(2)
+          .then((business) => {
+            expect(business).to.be.an.instanceOf(Business);
+            done();
+          });
+      });
+
+      it('should return null if id is not found', (done) => {
+        Business.findById(23)
+          .then((business) => {
+            expect(business).to.be.null;
+            done();
+          });
+      });
+    });
+
+    describe('get Review', () => {
+      it('should return all reviews for a business', (done) => {
+        Business.findById(2)
+          .then((business) => {
+            Review.findAll({ where: { businessId: business.id } })
+              .then((reviews) => {
+                expect(reviews).to.be.an('Array').that.has.lengthOf(5);
+                done();
+              });
+          });
+      });
     });
   });
 });
@@ -141,7 +155,6 @@ describe.skip('Model Business', () => {
       });
     });
   });
-
 
   describe('get AverageRating', () => {
     it('should calculate and return avarage rating for a business');
