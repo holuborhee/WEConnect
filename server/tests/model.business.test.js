@@ -16,13 +16,13 @@ describe('Model Business', () => {
           done();
         });
     });
+    it('should return all businesses with name under category at location');
+    it("should return only businesses that has 'ar' in name");
   });
 });
 describe.skip('Model Business', () => {
   describe('function all()', () => {
     it('should return all businesses');
-
-    it('should return all businesses with name under category at location');
   });
   describe('function at(owerri)', () => {
     it('should return all businesses in owerri');
