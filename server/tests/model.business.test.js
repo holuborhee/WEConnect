@@ -17,7 +17,27 @@ describe('Model Business', () => {
         });
     });
     it('should return all businesses with name under category at location');
-    it("should return only businesses that has 'ar' in name");
+  });
+
+  describe.skip('function at(owerri)', () => {
+    it('should return all businesses in owerri', (done) => {
+      expect(Business.at('owerri')).to.be.an('array').that.has.lengthOf(3);
+      done();
+    });
+  });
+
+  describe.skip('function under()', () => {
+    it('should return all businesses under a category', (done) => {
+      expect(Business.under(2)).to.be.an('array').that.has.lengthOf(1);
+      done();
+    });
+  });
+
+  describe('function nameHas(param)', () => {
+    it('should return all businesses with param in name', (done) => {
+      expect(Business.nameHas('Dangote')).to.be.an('Array').that.has.lengthOf(10);
+      done();
+    });
   });
 });
 describe.skip('Model Business', () => {

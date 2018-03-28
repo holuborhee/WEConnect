@@ -44,7 +44,7 @@ describe('Business Routes', () => {
 
       it.skip('should search for business with name', (done) => {
         chai.request(app)
-		  .get(`${BASE_URL}?q=noble`)
+		  .get(`${BASE_URL}?search=noble`)
 		  .end((err, res) => {
 		  	expect(res).to.have.status(200);
 		  	expect(res.body.status).to.equal('success');
