@@ -62,6 +62,37 @@ describe('Model Business', () => {
       });
     });
   });
+
+  describe.skip('DELETE', () => {
+    it('should reduce the businesses table', (done) => {
+      Business.findById(4)
+        .then((business) => {
+          business.destroy()
+            .then((business) => {
+              Business.findAll()
+                .then((businesses) => {
+                  expect(businesses).to.be.an('Array').and.to.have.lengthOf(9);
+                  done();
+                });
+            });
+        });
+    });
+
+    it('should remove the instance', (done) => {
+      Business.findById(4)
+        .then((business) => {
+          expect(business).to.be.null;
+          done();
+        });
+    });
+    it('should delete all reviews connected to it', () => {
+      Review.findAll({ where: { businessId: 4 } })
+        .then((review) => {
+          expect(review).to.be.lengthOf(0);
+          done();
+        });
+    });
+  });
 });
 describe.skip('Model Business', () => {
   describe('function modify()', () => {

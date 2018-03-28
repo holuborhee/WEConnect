@@ -183,10 +183,10 @@ describe('Business Routes', () => {
   	});
 
 
-  	describe.skip('DELETE', () => {
+  	describe('DELETE', () => {
   		it('should return fail and 404 if id not found on server', (done) => {
   		  chai.request(app)
-  	  	  .delete(`${BASE_URL}/9`)
+  	  	  .delete(`${BASE_URL}/100`)
   	  	  .end((err, res) => {
   	  	  	expect(res).to.have.status(404);
   	  	  	expect(res.body.status).to.equal('fail');
