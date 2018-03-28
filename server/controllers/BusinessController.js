@@ -79,26 +79,14 @@ class BusinessController {
    * @returns {object} res.
    */
   static create(req, res) {
-    const required = ['name', 'user', 'category', 'latitude', 'longitude', 'address'];
-    const resp = Helper.validateRequiredInRequest(req.body, required);
-    if (resp !== true) {
-      response.data = resp.data;
-      response.status = resp.status;
-      status = 422;
-    } else {
-      const {
-        name, user, category, latitude, longitude, address,
-      } = req.body;
-      const business = Business.add({
-        name, user, category, latitude, longitude, address,
-      });
-      response.data = { business };
-      response.status = 'success';
-      status = 201;
-    }
+    const {
+      name, latitude, longitude, address, categoryId,
+    } = req.body;
 
-
-    return res.status(status).send(response);
+    return Business.create({
+      name, latitude, longitude, address, categoryId, userId: 11,
+    }).then(business => res.status(201).send({ status: 'success', data: { business } }))
+      .catch(err => res.status(500).send({ status: 'error', message: 'There was an internal server error' }));
   }
 
   /**
@@ -111,20 +99,23 @@ class BusinessController {
   static update(req, res) {
     const { id } = req.params;
 
-    let business = Business.find(id);
-    if (business) {
-      business = business.modify(req.body);
-      response.data = { business };
-      response.status = 'success';
-      status = 200;
-    } else {
-      response.data = { id: `No resource could be found for ${id} on the server` };
-      response.status = 'fail';
-      status = 404;
-    }
-
-
-    return res.status(status).send(response);
+    return Business.findById(id)
+      .then((business) => {
+        if (business) {
+          const {
+            name, latitude, longitude, address, categoryId,
+          } = req.body;
+          business.update({
+            name: name || business.name,
+            latitude: latitude || business.latitude,
+            longitude: longitude || business.longitude,
+            address: address || business.address,
+            categoryId: categoryId || business.categoryId,
+          })
+            .then(business => res.status(200).send({ status: 'success', data: { business } })).catch(err => res.status(500).send({ status: 'error', message: 'There was an internal server error' }));
+        } else return res.status(404).send({ status: 'fail', data: { id: `No resource could be found for ${id} on the server` } });
+      })
+      .catch(err => res.status(500).send({ status: 'error', message: 'There was an internal server error' }));
   }
 
 
@@ -139,8 +130,9 @@ class BusinessController {
   	const { id } = req.params;
     return Business.findById(id)
       .then((business) => {
-        return business ? res.status(200).send({ status: 'success', data: { business } }) : res.status(404).send({ status: 'fail', data: { id: `No resource could be found for ${id} on the server` } });
-        done();
+        if (business) {
+          return res.status(200).send({ status: 'success', data: { business } });
+        } return res.status(404).send({ status: 'fail', data: { id: `No resource could be found for ${id} on the server` } });
       }).catch(err => res.status(500).send({ status: 'error', message: 'There was an internal server error' }));
   }
 

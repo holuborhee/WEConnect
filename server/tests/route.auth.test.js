@@ -63,12 +63,12 @@ describe.skip('Authentication Routes', () => {
 
 
   // Path login
-  describe(`${BASE_URL}/auth/login`, () => {
+  describe.skip(`${BASE_URL}/auth/login`, () => {
   // Method POST
     const path = `${BASE_URL}/auth/login`;
     describe('POST', () => {
     // All requests are okay
-      it('should return success for email and matching password', (done) => {
+      it.skip('should return success for email and matching password', (done) => {
         chai.request(app)
           .post(path)
           .send({
@@ -84,7 +84,7 @@ describe.skip('Authentication Routes', () => {
           });
       });
 
-      it('should return success for phone and matching password', (done) => {
+      it.skip('should return success for phone and matching password', (done) => {
         chai.request(app)
           .post(path)
           .send({
@@ -99,7 +99,7 @@ describe.skip('Authentication Routes', () => {
       });
 
 
-      it('should return Unauthorized code for wrong password', (done) => {
+      it.skip('should return Unauthorized code for wrong password', (done) => {
         chai.request(app)
           .post(path)
           .send({
@@ -113,7 +113,7 @@ describe.skip('Authentication Routes', () => {
           });
       });
 
-      it('should return Unauthorized code for wrong email', (done) => {
+      it.skip('should return Unauthorized code for wrong email', (done) => {
         chai.request(app)
           .post(path)
           .send({
@@ -127,7 +127,7 @@ describe.skip('Authentication Routes', () => {
           });
       });
 
-      it('should return Unauthorized code for wrong phone', (done) => {
+      it.skip('should return Unauthorized code for wrong phone', (done) => {
         chai.request(app)
           .post(path)
           .send({
@@ -142,7 +142,7 @@ describe.skip('Authentication Routes', () => {
       });
 
 
-      it('should return Unprocessed entity if any value is missing', (done) => {
+      it.skip('should return Unprocessed entity if any value is missing', (done) => {
         chai.request(app)
           .post(path)
           .send({

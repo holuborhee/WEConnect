@@ -27,10 +27,10 @@ describe('Database Connection and sesding', () => {
       });
   });
 
-  it('should return users of length 10', (done) => {
+  it('should return users of length 11', (done) => {
     User.findAll()
       .then((users) => {
-        expect(users).to.have.lengthOf(10);
+        expect(users).to.have.lengthOf(11);
         done();
       });
   });
