@@ -39,6 +39,24 @@ describe('Model Business', () => {
       done();
     });
   });
+
+  describe('findByID', () => {
+    it('should return a business if ID is found', (done) => {
+      Business.findById(2)
+        .then((business) => {
+          expect(business).to.be.an.instanceOf(Business);
+          done();
+        });
+    });
+
+    it('should return null if id is not found', (done) => {
+      Business.findById(23)
+        .then((business) => {
+          expect(business).to.be.null;
+          done();
+        });
+    });
+  });
 });
 describe.skip('Model Business', () => {
   describe('function all()', () => {
@@ -65,9 +83,7 @@ describe.skip('Model Business', () => {
 
 
   describe('function find()', () => {
-    it('find(i) should return a business if value is found for i');
 
-    it('find(i) should return null if no value is found for i');
   });
 
 

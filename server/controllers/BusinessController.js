@@ -102,11 +102,11 @@ class BusinessController {
    */
   static show(req, res) {
   	const { id } = req.params;
-    const business = Business.find(id);
-    response.data = business ? { business } : { id: `No resource could be found for ${id} on the server` };
-    response.status = business ? 'success' : 'fail';
-    status = business ? 200 : 404;
-    return res.status(status).send(response);
+    Business.findById(id)
+      .then((business) => {
+        return business ? res.status(200).send({ status: 'success', data: { business } }) : res.status(404).send({ status: 'fail', data: { id: `No resource could be found for ${id} on the server` } });
+        done();
+      });
   }
 
 
