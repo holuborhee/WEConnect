@@ -4,7 +4,7 @@ import models from '../models';
 
 const { expect } = chai;
 
-const { Business } = models;
+const { Business, Review } = models;
 
 
 describe('Model Business', () => {
@@ -49,12 +49,15 @@ describe('Model Business', () => {
       });
     });
 
-    describe.skip('get Review', () => {
+    describe('get Review', () => {
       it('should return all reviews for a business', (done) => {
         Business.findById(2)
           .then((business) => {
-            expect(business.reviews).to.be.an('Object');
-            done();
+            Review.findAll({ where: { businessId: business.id } })
+              .then((reviews) => {
+                expect(reviews).to.be.an('Array').that.has.lengthOf(5);
+                done();
+              });
           });
       });
     });
