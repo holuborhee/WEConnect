@@ -19,25 +19,16 @@ describe('Model Business', () => {
     it('should return all businesses with name under category at location');
   });
 
-  describe.skip('function at(owerri)', () => {
-    it('should return all businesses in owerri', (done) => {
-      expect(Business.at('owerri')).to.be.an('array').that.has.lengthOf(3);
-      done();
-    });
+  describe('function at(owerri)', () => {
+    it('should return all businesses in owerri');
   });
 
-  describe.skip('function under()', () => {
-    it('should return all businesses under a category', (done) => {
-      expect(Business.under(2)).to.be.an('array').that.has.lengthOf(1);
-      done();
-    });
+  describe('function under()', () => {
+    it('should return all businesses under a category');
   });
 
   describe('function nameHas(param)', () => {
-    it('should return all businesses with param in name', (done) => {
-      expect(Business.nameHas('Dangote')).to.be.an('Array').that.has.lengthOf(10);
-      done();
-    });
+    it('should return all businesses with param in name');
   });
 
   describe('findByID', () => {
@@ -59,34 +50,6 @@ describe('Model Business', () => {
   });
 });
 describe.skip('Model Business', () => {
-  describe('function all()', () => {
-    it('should return all businesses');
-  });
-  describe('function at(owerri)', () => {
-    it('should return all businesses in owerri');
-  });
-
-  describe('function under()', () => {
-    it('should return all businesses under a category');
-  });
-
-  describe('function nameHas(param)', () => {
-    it('should return all businesses with param in name');
-  });
-
-
-  describe('Constructor', () => {
-    it('constructor should create an instance of business class');
-
-    it('constructor should throw an error if props value are not complete or undefined');
-  });
-
-
-  describe('function find()', () => {
-
-  });
-
-
   describe('function modify()', () => {
     it('should return an instance of business');
 
