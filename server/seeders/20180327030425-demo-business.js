@@ -3,12 +3,12 @@ const faker = require('faker');
 const length = Array(10).fill().map((x, i) => i + 1);
 
 const businesses = length.map(val => ({
-  name: faker.company.companyName(),
+  name: val === 1 || val === 3 ? `andela ${faker.company.companyName()}` : faker.company.companyName(),
   latitude: faker.address.latitude(),
   longitude: faker.address.longitude(),
-  address: `${faker.address.streetAddress()} ${faker.address.city()} ${faker.address.state()}`,
+  address: val === 1 || val === 3 ? `${faker.address.streetAddress()} ${faker.address.city()} lagos` : `${faker.address.streetAddress()} ${faker.address.city()} ${faker.address.state()}`,
   userId: val,
-  categoryId: val > 6 ? val - ((val - 6) + 1) : val,
+  categoryId: val > 6 ? 3 : val,
   createdAt: new Date().toISOString(),
   updatedAt: new Date().toISOString(),
 }));
@@ -18,13 +18,3 @@ module.exports = {
   down: (queryInterface, Sequelize) => queryInterface.bulkDelete('Businesses'),
 
 };
-
-
-/* name: faker.company.companyName,
-  latitude: faker.address.latitude,
-  longitude: faker.address.longitude,
-  address: `${faker.address.streetAddress}`,
-  userId: val,
-  categoryId: val > 6 ? val - (val - 6 + 1) : val,
-  createdAt: new Date().toISOString(),
-  updatedAt: new Date().toISOString(), */
