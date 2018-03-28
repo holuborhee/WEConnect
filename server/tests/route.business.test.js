@@ -119,11 +119,11 @@ describe('Business Routes', () => {
     });
   });
 
-  describe.skip('/businesses/:id', () => {
+  describe('/businesses/:id', () => {
   	describe('GET', () => {
   	  it('should return 404 for id not found', (done) => {
   	  	chai.request(app)
-  	  	  .get(`${BASE_URL}/8`)
+  	  	  .get(`${BASE_URL}/29`)
   	  	  .end((err, res) => {
   	  	  	expect(res).to.have.status(404);
   	  	  	expect(res.body.status).to.equal('fail');
