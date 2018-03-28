@@ -137,11 +137,11 @@ class BusinessController {
    */
   static show(req, res) {
   	const { id } = req.params;
-    Business.findById(id)
+    return Business.findById(id)
       .then((business) => {
         return business ? res.status(200).send({ status: 'success', data: { business } }) : res.status(404).send({ status: 'fail', data: { id: `No resource could be found for ${id} on the server` } });
         done();
-      });
+      }).catch(err => res.status(500).send({ status: 'error', message: 'There was an internal server error' }));
   }
 
 
@@ -155,20 +155,15 @@ class BusinessController {
   static destroy(req, res) {
   	const { id } = req.params;
 
-  	let business = Business.find(id);
-    if (business) {
-      business = business.delete();
-      response.data = null;
-      response.status = 'success';
-      status = 200;
-    } else {
-      response.data = { id: `No resource could be found for ${id} on the server` };
-      response.status = 'fail';
-      status = 404;
-    }
-
-
-    return res.status(status).send(response);
+  	return Business.findById(id)
+      .then((business) => {
+        if (business) {
+          business.destroy()
+            .then(() => res.status(200).send({ status: 'success', data: null }))
+            .catch(err => res.status(500).send({ status: 'error', message: 'There was an internal server error' }));
+        } else return res.status(404).send({ status: 'fail', data: { id: `No resource could be found for ${id} on the server` } });
+      })
+      .catch(err => res.status(500).send({ status: 'error', message: 'There was an internal server error' }));
   }
 
   static allReviews(req, res) {

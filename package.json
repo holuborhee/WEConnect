@@ -42,16 +42,20 @@
     "sequelize-cli": "^4.0.0"
   },
   "scripts": {
-    "migrate-undo": "sequelize db:migrate:undo:all --env test",
-    "seed": "sequelize db:seed:undo:all --env test && sequelize db:seed:all --env test",
-    "migrate": "npm run migrate-undo && sequelize db:migrate --env test && npm run seed",
+    "migrate-undo": "sequelize db:migrate:undo:all",
+    "seed": "sequelize db:seed:all",
+    "migrate": "npm run migrate-undo && sequelize db:migrate && npm run seed",
+    "test-migrate-undo": "sequelize db:migrate:undo:all --env test",
+    "test-seed": "sequelize db:seed:all --env test",
+    "test-migrate": "npm run test-migrate-undo && sequelize db:migrate --env test && npm run test-seed",
     "dev": "npm run pretest && babel-node server/index.js",
     "start": "nodemon server/index.js --exec babel-node",
-    "dev-start": "nodemon server/index.js --exec \"npm run seed && npm run test && babel-node\"",
+    "dev-start": "nodemon server/index.js --exec \"npm run test-migrate && npm run test && babel-node\"",
     "build": "babel server -d dist",
     "serve": "node dist/index.js",
     "test": "nyc --reporter=html --reporter=text mocha server/tests/ --compilers js:babel-register",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test"
+    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test",
+    "heroku-postbuild": "npm run migrate"
   }
 }
