@@ -1,5 +1,6 @@
 import express from 'express';
 import { BusinessController, AuthController } from '../controllers';
+import CheckAuth from '../middlewares/CheckAuth';
 
 
 const app = express();
@@ -7,14 +8,14 @@ const app = express();
 
 
 app.route('/businesses')
-  .post(BusinessController.create)
+  .post(CheckAuth.authenticated, BusinessController.create)
   .get(BusinessController.index);
 
 
 app.route('/businesses/:id')
-  .delete(BusinessController.destroy)
+  .delete(CheckAuth.authorized, BusinessController.destroy)
   .get(BusinessController.show)
-  .put(BusinessController.update);
+  .put(CheckAuth.authorized, BusinessController.update);
 
 app.route('/businesses/:id/reviews')
   .get(BusinessController.allReviews)

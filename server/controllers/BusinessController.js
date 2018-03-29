@@ -84,7 +84,7 @@ class BusinessController {
     } = req.body;
 
     return Business.create({
-      name, latitude, longitude, address, categoryId, userId: 11,
+      name, latitude, longitude, address, categoryId, userId: req.userData.id,
     }).then(business => res.status(201).send({ status: 'success', data: { business } }))
       .catch(err => res.status(500).send({ status: 'error', message: 'There was an internal server error' }));
   }
