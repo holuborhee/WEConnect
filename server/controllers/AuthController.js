@@ -46,6 +46,7 @@ class AuthController {
      */
   static login(req, res) {
     const { email, phone, password } = req.body;
+
     return User.findOne({ where: { email } })
       .then((user) => {
         if (!user) { return res.status(401).send({ status: 'error', message: 'Authentication failed' }); }
