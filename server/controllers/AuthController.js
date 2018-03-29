@@ -1,4 +1,5 @@
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 import models from '../models';
 import Helper from '../Helper';
 
@@ -25,10 +26,12 @@ class AuthController {
     } = req.body;
 
     return User.create({
-      name, phone, email, password: `${bcrypt.hashSync('password', 10)}`,
+      name, phone: phone.trim(), email: email.trim().toLowerCase(), password: `${bcrypt.hashSync('password', 10)}`,
     })
       .then((user) => {
-        const { name, phone, email } = user;
+        const {
+          id, name, phone, email,
+        } = user;
         return res.status(201).send({ status: 'success', data: { user: { name, phone, email } } });
       })
       .catch(err => res.status(500).send({ status: 'error', message: 'There was an internal server error' }));
@@ -43,28 +46,31 @@ class AuthController {
      */
   static login(req, res) {
     const { email, phone, password } = req.body;
-    let user;
-    if (!email && !phone) {
-      response.status = 'fail';
-      response.data = { email: 'There was no email in request', phone: 'There was no phone in request' };
-      return res.status(422).send(response);
-    } else if (email && phone) {
-      user = User.getByEmailAndPassword(email, password);
-      user = user.id ? user : User.getByPhoneAndPassword(phone, password);
-    } else if (email) {
-      user = User.getByEmailAndPassword(email, password);
-    } else if (phone) {
-      user = User.getByPhoneAndPassword(phone, password);
-    }
+    return User.findOne({ where: { email } })
+      .then((user) => {
+        if (!user) { return res.status(401).send({ status: 'error', message: 'Authentication failed' }); }
+        if (!AuthController.comparePassword(password, user.password)) { return res.status(401).send({ status: 'error', message: 'Authentication failed' }); }
+        const _token = jwt.sign({ id: user.id }, process.env.JWT_KEY, { expiresIn: '1h' });
+        const {
+          id, name, phone, email,
+        } = user;
+        return res.status(200).send({
+          status: 'success',
+          data: {
+            _token,
+            user: {
+              id, name, phone, email,
+            },
+          },
+        });
+      })
+      .catch(err => res.status(500).send({ status: 'error', message: 'There was an internal server error' }));
+  }
 
-    response.status = user.id ? 'success' : 'fail';
-    response.data = user.id ? { user } : user;
-    const status = user.id ? 200 : 401;
-    if (user.id) {
-      delete response.data.user.password;
-    }
-
-    return res.status(status).send(response);
+  static comparePassword(reqPassword, dbPassword) {
+    return bcrypt.compareSync(reqPassword, dbPassword);
+    // if (!isValid) { return res.status(401).send({ status: 'error', message: 'Authentication failed' }); }
+    // return res.status(200).send({ status: 'success', message: 'Authentication successful' });
   }
 
 
