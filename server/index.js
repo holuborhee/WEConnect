@@ -21,7 +21,7 @@ app.use('/api/v1', routes);
 
 app.use('/docs', express.static('docs'));
 app.use('/', (req, res) => {
-  res.redirect('/docs');
+  res.status(400).send({ status: 'error', meassage: "The server doesn't understand the path you requested for" });
 });
 
 
