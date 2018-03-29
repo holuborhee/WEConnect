@@ -52,7 +52,7 @@ class CheckRequest {
   	const required = ['reviewer', 'rating', 'comment'];
   	const allInRequest = Helper.validateRequiredInRequest(req.body, required);
   	if (allInRequest === true) {
-  			next();
+  		next();
   	} else {
   		return res.status(422).send(allInRequest);
   	}
@@ -62,6 +62,9 @@ class CheckRequest {
   static validateLogin(req, res, next) {
   	const allInRequest = Helper.validateRequiredInRequest(req.body, ['email', 'password']);
   	if (allInRequest === true) {
+  		const {
+        email, password,
+      } = req.body;
   		if (StringFormatValidation.validate({ type: 'email' }, email)) {
   		 next();
    		} else return res.status(422).send({ status: 'fail', data: { email: `${email} is not a valid email address` } });

@@ -15,7 +15,7 @@ app.route('/businesses')
 app.route('/businesses/:id')
   .delete(CheckAuth.authorized, CheckRequest.validateParam, BusinessController.destroy)
   .get(CheckRequest.validateParam, BusinessController.show)
-  .put(CheckAuth.authorized, CheckRequest.validateParam, BusinessController.update);
+  .put(CheckAuth.authenticated, CheckAuth.authorized, CheckRequest.validateParam, BusinessController.update);
 
 app.route('/businesses/:id/reviews')
   .get(CheckRequest.validateParam, BusinessController.allReviews)
