@@ -30,10 +30,6 @@ WEConnect provides a platform that brings businesses and individuals together.
 
 ```$ cd WEConnect```
 
-#### Switch to development branch
-
-```$ git checkout develop```
-
 You can start doing amazing things in any of the development folders :heart_eyes:
 
 
@@ -50,10 +46,6 @@ The development flow is divided into 3 with separate folders for each.
 - [The live preview is available here](https://holuborhee.github.io/WEConnect/)
 
 - [Also check out gh-pages branch for a more comprehensive README](https://github.com/holuborhee/WEConnect/tree/gh-pages)
-
-##### WHAT SHOULD I KNOW?
-1. [ReactJs](https://reactjs.org)
-2. [Material UI FRAMEWORK](https://www.material-ui.com)
 
 ##### INITIAL SETUP
 

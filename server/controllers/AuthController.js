@@ -70,35 +70,7 @@ class AuthController {
 
   static comparePassword(reqPassword, dbPassword) {
     return bcrypt.compareSync(reqPassword, dbPassword);
-    // if (!isValid) { return res.status(401).send({ status: 'error', message: 'Authentication failed' }); }
-    // return res.status(200).send({ status: 'success', message: 'Authentication successful' });
-  }
-
-
-  static validateRegister(requestBody) {
-    const required = ['name', 'email', 'phone', 'password', 'confirmPassword'];
-    const resp = Helper.validateRequiredInRequest(requestBody, required);
-    if (resp !== true) {
-      response.status = resp.status;
-      response.data = resp.data;
-      return false;
-    } else if (requestBody.password !== requestBody.confirmPassword) {
-      response.status = 'fail';
-      response.data = { confirmPassword: 'Password does not match' };
-      return false;
-    }
-
-    return true;
   }
 }
 
 export default AuthController;
-
-
-/* const {
-      name, phone, email, password, passwordConfirm,
-    } = req.body;
-    // const user = User.add({ name, address, role });
-    if (user) {
-      return res.status(201).send({ error: false, user });
-    } */

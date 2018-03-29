@@ -62,12 +62,6 @@ class BusinessController {
     return Business.findAll(condition)
       .then(businesses => res.status(200).send({ status: 'success', data: { businesses } }))
       .catch(error => res.status(400).send({ error }));
-
-
-    /* if (location) { businesses = Business.at(location, businesses); }
-    if (category) { businesses = Business.under(category, businesses); }
-    response.data = { businesses };
-    return res.status(200).send(response); */
   }
 
 
