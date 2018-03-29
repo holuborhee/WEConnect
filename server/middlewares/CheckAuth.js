@@ -16,7 +16,7 @@ class CheckAuth {
   }
 
   static authorized(req, res, next) {
-    return Business.findById(req.params.businessId)
+    return Business.findById(req.params.id)
       .then((business) => {
         	if (business.userId === parseInt(req.userData.id, 10)) {
         		 next();
