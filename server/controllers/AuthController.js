@@ -26,7 +26,7 @@ class AuthController {
     } = req.body;
 
     return User.create({
-      name, phone: phone.trim(), email: email.trim().toLowerCase(), password: `${bcrypt.hashSync('password', 10)}`,
+      name, phone: phone.trim(), email: email.trim().toLowerCase(), password: `${bcrypt.hashSync(password, 10)}`,
     })
       .then((user) => {
         const {
