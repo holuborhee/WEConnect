@@ -36,7 +36,7 @@ class BusinessController {
               },
             }, {
               address: {
-                [Op.like]: `%${location}%`,
+                [Op.iLike]: `%${location}%`,
               },
             },
           ],
@@ -52,7 +52,7 @@ class BusinessController {
               },
             }, {
               address: {
-                [Op.like]: `%${location}%`,
+                [Op.iLike]: `%${location}%`,
               },
             },
           ],
