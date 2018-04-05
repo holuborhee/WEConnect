@@ -13,7 +13,7 @@ app.route('/businesses')
 
 
 app.route('/businesses/:id')
-  .delete(CheckAuth.authorized, CheckRequest.validateParam, BusinessController.destroy)
+  .delete(CheckAuth.authenticated, CheckAuth.authorized, CheckRequest.validateParam, BusinessController.destroy)
   .get(CheckRequest.validateParam, BusinessController.show)
   .put(CheckAuth.authenticated, CheckAuth.authorized, CheckRequest.validateParam, BusinessController.update);
 
